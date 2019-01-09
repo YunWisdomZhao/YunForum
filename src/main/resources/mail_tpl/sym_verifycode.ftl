@@ -140,7 +140,7 @@
                                                     <span>
                                                         <p align="left" style="font-size:12px;line-height:15px;color:#666666;margin-top:0px;margin-bottom:5px;white-space:normal">
                                                             <span>
-                                                                <a href="${servePath}/about" style="color:#4183c4;font-weight:bold;text-decoration:none" target="_blank">关于</a> 
+                                                                <a href="/article/1546929099122" style="color:#4183c4;font-weight:bold;text-decoration:none" target="_blank">关于</a>
                                                                 <span style="color:#999">•</span>
                                                                 <a href="${servePath}/article/1457158841475" style="color:#4183c4;font-weight:bold;text-decoration:none" target="_blank">API</a>
                                                                 <span style="color:#999">•</span>

@@ -121,6 +121,82 @@ public class ArticleRepository extends AbstractRepository {
         return ret;
     }
 
+    public List<JSONObject> getQuestionRandomly(final int fetchSize) throws RepositoryException {
+
+        final List<JSONObject> ret = new ArrayList<>();
+
+        final double mid = Math.random();
+
+        Query query = new Query().setFilter(
+                CompositeFilterOperator.and(new PropertyFilter(Article.ARTICLE_RANDOM_DOUBLE, FilterOperator.GREATER_THAN_OR_EQUAL, mid),
+                        new PropertyFilter(Article.ARTICLE_RANDOM_DOUBLE, FilterOperator.LESS_THAN_OR_EQUAL, mid),
+                        new PropertyFilter(Article.ARTICLE_STATUS, FilterOperator.NOT_EQUAL, Article.ARTICLE_STATUS_C_INVALID),
+                        new PropertyFilter(Article.ARTICLE_TYPE, FilterOperator.EQUAL, Article.ARTICLE_TYPE_C_QNA))).
+                addProjection(Article.ARTICLE_TITLE, String.class).
+                addProjection(Article.ARTICLE_PERMALINK, String.class).
+                addProjection(Article.ARTICLE_AUTHOR_ID, String.class).
+                addProjection(Article.ARTICLE_CONTENT, String.class).
+                setCurrentPageNum(1).setPageSize(fetchSize).setPageCount(1);
+        final List<JSONObject> list1 = getList(query);
+        ret.addAll(list1);
+
+        final int reminingSize = fetchSize - list1.size();
+        if (0 != reminingSize) { // Query for remains
+            query = new Query().setFilter(
+                    CompositeFilterOperator.and(new PropertyFilter(Article.ARTICLE_RANDOM_DOUBLE, FilterOperator.GREATER_THAN_OR_EQUAL, 0D),
+                            new PropertyFilter(Article.ARTICLE_RANDOM_DOUBLE, FilterOperator.LESS_THAN_OR_EQUAL, mid),
+                            new PropertyFilter(Article.ARTICLE_STATUS, FilterOperator.NOT_EQUAL, Article.ARTICLE_STATUS_C_INVALID),
+                            new PropertyFilter(Article.ARTICLE_TYPE, FilterOperator.EQUAL, Article.ARTICLE_TYPE_C_QNA))).
+                    addProjection(Article.ARTICLE_TITLE, String.class).
+                    addProjection(Article.ARTICLE_PERMALINK, String.class).
+                    addProjection(Article.ARTICLE_AUTHOR_ID, String.class).
+                    addProjection(Article.ARTICLE_CONTENT, String.class).
+                    setCurrentPageNum(1).setPageSize(reminingSize).setPageCount(1);
+            final List<JSONObject> list2 = getList(query);
+
+            ret.addAll(list2);
+        }
+
+        return ret;
+    }
+
+    public List<JSONObject> getRecruitRandomly(final int fetchSize) throws RepositoryException {
+
+        final List<JSONObject> ret = new ArrayList<>();
+
+        final double mid = Math.random();
+
+        Query query = new Query().setFilter(
+                CompositeFilterOperator.and(new PropertyFilter(Article.ARTICLE_RANDOM_DOUBLE, FilterOperator.GREATER_THAN_OR_EQUAL, mid),
+                        new PropertyFilter(Article.ARTICLE_RANDOM_DOUBLE, FilterOperator.LESS_THAN_OR_EQUAL, mid),
+                        new PropertyFilter(Article.ARTICLE_STATUS, FilterOperator.NOT_EQUAL, Article.ARTICLE_STATUS_C_INVALID),
+                        new PropertyFilter(Article.ARTICLE_TYPE, FilterOperator.EQUAL, Article.ARTICLE_TYPE_C_CITY_BROADCAST))).
+                addProjection(Article.ARTICLE_TITLE, String.class).
+                addProjection(Article.ARTICLE_PERMALINK, String.class).
+                addProjection(Article.ARTICLE_AUTHOR_ID, String.class).
+                setCurrentPageNum(1).setPageSize(fetchSize).setPageCount(1);
+        final List<JSONObject> list1 = getList(query);
+        ret.addAll(list1);
+
+        final int reminingSize = fetchSize - list1.size();
+        if (0 != reminingSize) { // Query for remains
+            query = new Query().setFilter(
+                    CompositeFilterOperator.and(new PropertyFilter(Article.ARTICLE_RANDOM_DOUBLE, FilterOperator.GREATER_THAN_OR_EQUAL, 0D),
+                            new PropertyFilter(Article.ARTICLE_RANDOM_DOUBLE, FilterOperator.LESS_THAN_OR_EQUAL, mid),
+                            new PropertyFilter(Article.ARTICLE_STATUS, FilterOperator.NOT_EQUAL, Article.ARTICLE_STATUS_C_INVALID),
+                            new PropertyFilter(Article.ARTICLE_TYPE, FilterOperator.EQUAL, Article.ARTICLE_TYPE_C_CITY_BROADCAST))).
+                    addProjection(Article.ARTICLE_TITLE, String.class).
+                    addProjection(Article.ARTICLE_PERMALINK, String.class).
+                    addProjection(Article.ARTICLE_AUTHOR_ID, String.class).
+                    setCurrentPageNum(1).setPageSize(reminingSize).setPageCount(1);
+            final List<JSONObject> list2 = getList(query);
+
+            ret.addAll(list2);
+        }
+
+        return ret;
+    }
+
     /**
      * Gets an article by the specified article title.
      *

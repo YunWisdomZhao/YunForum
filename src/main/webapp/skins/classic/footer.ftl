@@ -1,22 +1,3 @@
-<#--
-
-    Symphony - A modern community (forum/BBS/SNS/blog) platform written in Java.
-    Copyright (C) 2012-2018, b3log.org & hacpai.com
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Affero General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Affero General Public License for more details.
-
-    You should have received a copy of the GNU Affero General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
--->
 <div class="footer">
     <div class="wrapper">
         <div class="slogan">
@@ -42,14 +23,14 @@
         </div>
         <div class="fn-flex-1">
             <div class="footer-nav fn-clear">
-                <a rel="help" href="${servePath}/about">${aboutLabel}</a>
+                <a rel="help" href="${servePath}/article/1546929099122">${aboutLabel}</a>
                 <a href="https://hacpai.com/article/1457158841475">API</a>
                 <a href="${servePath}/tag/announcement">${symAnnouncementLabel}</a>
                 <a href="${servePath}/domains">${domainLabel}</a>
                 <a href="${servePath}/tags">${tagLabel}</a>
                 <a href="${servePath}/statistic">${dataStatLabel}</a>
                 <div class="fn-right">
-                    <a rel="copyright" href="https://hacpai.com" target="_blank">hacpai.com</a>
+                    <a rel="copyright" href="http://localhost:8080" target="_blank">Symphony</a>
                 ${visionLabel}
                 </div>
             </div>
@@ -57,9 +38,9 @@
             ${sloganLabel}
                 <div class="fn-right">
                     <#if footerBeiAnHao != ''>
-                        <a href="http://www.miitbeian.gov.cn/" target="_blank">${footerBeiAnHao}</a> •
+                        <a href="http://localhost:8080" target="_blank">${footerBeiAnHao}</a> •
                     </#if>
-                    © ${year} <a href="https://b3log.org" target="_blank">B3log 开源</a>旗下云南链滴科技有限公司版权所有 •
+                    © ${year} <a href="http://localhost:8080" target="_blank">B3log-Symphony</a> •
                     <a href="https://sym.b3log.org" target="_blank">Sym</a>
                 ${version} • ${elapsed?c}ms
                 </div>

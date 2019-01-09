@@ -212,7 +212,7 @@ public final class Mails {
         try {
             final Template template = TEMPLATE_CFG.getTemplate(templateName + ".ftl");
             final StringWriter stringWriter = new StringWriter();
-            template.process(dataModel, stringWriter);
+//            template.process(dataModel, stringWriter);
             stringWriter.close();
             final String html = stringWriter.toString();
 

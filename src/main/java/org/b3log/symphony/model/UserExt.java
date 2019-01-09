@@ -510,6 +510,21 @@ public final class UserExt {
      */
     public static final int USER_AVATAR_VIEW_MODE_C_STATIC = 1;
 
+    /**
+     * User avatar view mode - question.
+     */
+    public static final int USER_AVATAR_VIEW_MODE_C_QUESTION = 20;
+
+    /**
+     * User avatar view mode - question.
+     */
+    public static final int USER_AVATAR_VIEW_MODE_C_QUESTION_RANDOM = 21;
+
+    /**
+     * User avatar view mode - recruit.
+     */
+    public static final int USER_AVATAR_VIEW_MODE_C_RECRUIT = 30;
+
     //// Comment View Mode constants
     /**
      * User comment view mode - traditional.

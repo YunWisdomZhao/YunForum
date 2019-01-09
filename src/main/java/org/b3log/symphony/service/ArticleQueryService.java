@@ -1255,6 +1255,33 @@ public class ArticleQueryService {
     }
 
     /**
+     * Gets question random articles.
+     *
+     * @return recent articles, returns an empty list if not found
+     */
+    public List<JSONObject> getQuestionArticles(){
+        return articleCache.getQuestionArticles();
+    }
+
+    /**
+     * Gets question random articles.
+     *
+     * @return recent articles, returns an empty list if not found
+     */
+    public List<JSONObject> getQuestionRandomArticles(){
+        return articleCache.getQuestionRandomArticles();
+    }
+
+    /**
+     * Gets question random articles.
+     *
+     * @return recent articles, returns an empty list if not found
+     */
+    public List<JSONObject> getRecruitRandomArticles(){
+        return articleCache.getRecruitRandomArticles();
+    }
+
+    /**
      * Makes article showing filters.
      *
      * @return filter the article showing to user
@@ -1803,7 +1830,7 @@ public class ArticleQueryService {
         final JSONObject author = userRepository.get(authorId);
         article.put(Article.ARTICLE_T_AUTHOR, author);
 
-        if (Article.ARTICLE_ANONYMOUS_C_ANONYMOUS == article.optInt(Article.ARTICLE_ANONYMOUS)) {
+        if (Article.ARTICLE_ANONYMOUS_C_ANONYMOUS == article.optInt(Article.ARTICLE_ANONYMOUS) || author == null) {
             article.put(Article.ARTICLE_T_AUTHOR_NAME, UserExt.ANONYMOUS_USER_NAME);
             article.put(Article.ARTICLE_T_AUTHOR_THUMBNAIL_URL + "210", avatarQueryService.getDefaultAvatarURL("210"));
             article.put(Article.ARTICLE_T_AUTHOR_THUMBNAIL_URL + "48", avatarQueryService.getDefaultAvatarURL("48"));

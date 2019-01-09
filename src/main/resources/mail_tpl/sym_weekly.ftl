@@ -4,6 +4,8 @@
             <tr style="border-collapse:collapse">
                 <td align="center" bgcolor="#f9f6f6" style="border-collapse:collapse;font-family:Helvetica,Arial,sans-serif">
                     <span style="font-size: 0;display: none;">这是本周的热议贴合集，希望每周都能带给你轻松和精彩。如果不想再收到类似邮件，可在论坛的功能设置中进行退订。</span>
+
+
                     <table style="margin: 20px 10px;border: 1px solid #e5e5e5;border-radius: 5px;" width="640" cellpadding="0" cellspacing="0" border="0">
                         <tbody>
                             <tr style="border-collapse:collapse">
@@ -204,7 +206,7 @@
                                                     <span>
                                                         <p align="left" style="font-size:12px;line-height:15px;color:#666666;margin-top:0px;margin-bottom:5px;white-space:normal">
                                                             <span>
-                                                                <a href="${servePath}/about" style="color:#4183c4;font-weight:bold;text-decoration:none" target="_blank">关于</a> 
+                                                                <a href="/article/1546929099122" style="color:#4183c4;font-weight:bold;text-decoration:none" target="_blank">关于</a>
                                                                 <span style="color:#999">•</span>
                                                                 <a href="${servePath}/article/1457158841475" style="color:#4183c4;font-weight:bold;text-decoration:none" target="_blank">API</a>
                                                                 <span style="color:#999">•</span>

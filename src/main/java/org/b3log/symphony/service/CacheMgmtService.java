@@ -103,10 +103,16 @@ public class CacheMgmtService {
         }
         try {
             LOGGER.info("Refreshing cache");
+            //加载领域缓存信息
             domainCache.loadDomains();
+            //加载文章缓存信息
             articleCache.loadPerfectArticles();
             articleCache.loadSideHotArticles();
             articleCache.loadSideRandomArticles();
+            articleCache.loadQuestionArticles();
+            articleCache.loadQuestionRandomArticles();
+            articleCache.loadRecruitRandomArticles();
+            //加载Tags缓存信息
             tagCache.loadTags();
             final StatisticProcessor statisticProcessor = BeanManager.getInstance().getReference(StatisticProcessor.class);
             statisticProcessor.loadStatData();

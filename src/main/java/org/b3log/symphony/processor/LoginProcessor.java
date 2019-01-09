@@ -48,6 +48,7 @@ import org.b3log.symphony.processor.advice.validate.UserForgetPwdValidation;
 import org.b3log.symphony.processor.advice.validate.UserRegister2Validation;
 import org.b3log.symphony.processor.advice.validate.UserRegisterValidation;
 import org.b3log.symphony.service.*;
+import org.b3log.symphony.util.Mails;
 import org.b3log.symphony.util.Sessions;
 import org.b3log.symphony.util.Symphonys;
 import org.json.JSONObject;
@@ -281,7 +282,6 @@ public class LoginProcessor {
 
         if (null != request.getAttribute(Common.CURRENT_USER)) {
             context.sendRedirect(Latkes.getServePath());
-
             return;
         }
 
@@ -746,17 +746,20 @@ public class LoginProcessor {
 
             final int wrongCount = wrong.optInt(Common.WRON_COUNT);
             if (wrongCount > 3) {
-                final String captcha = requestJSONObject.optString(CaptchaProcessor.CAPTCHA);
-                if (!StringUtils.equals(wrong.optString(CaptchaProcessor.CAPTCHA), captcha)) {
-                    context.renderMsg(langPropsService.get("captchaErrorLabel"));
-                    context.renderJSONValue(Common.NEED_CAPTCHA, userId);
-
-                    return;
-                }
+//                final String captcha = requestJSONObject.optString(CaptchaProcessor.CAPTCHA);
+//                if (!StringUtils.equals(wrong.optString(CaptchaProcessor.CAPTCHA), captcha)) {
+//                    context.renderMsg(langPropsService.get("captchaErrorLabel"));
+//                    context.renderJSONValue(Common.NEED_CAPTCHA, userId);
+//
+//                    return;
+//                }
             }
 
             final String userPassword = user.optString(User.USER_PASSWORD);
+            System.out.println(userPassword);
+            System.out.println(user.optString(User.USER_PASSWORD));
             if (userPassword.equals(requestJSONObject.optString(User.USER_PASSWORD))) {
+
                 final String token = Sessions.login(response, userId, requestJSONObject.optBoolean(Common.REMEMBER_LOGIN));
 
                 final String ip = Requests.getRemoteAddr(request);
@@ -771,7 +774,7 @@ public class LoginProcessor {
             }
 
             if (wrongCount > 2) {
-                context.renderJSONValue(Common.NEED_CAPTCHA, userId);
+//                context.renderJSONValue(Common.NEED_CAPTCHA, userId);
             }
 
             wrong.put(Common.WRON_COUNT, wrongCount + 1);

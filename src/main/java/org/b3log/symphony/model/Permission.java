@@ -514,12 +514,17 @@ public final class Permission {
      * {@code false} otherwise
      */
     public static boolean hasPermission(final Set<String> requisitePermissions, final Set<String> grantPermissions) {
-        for (final String requisitePermission : requisitePermissions) {
-            if (!grantPermissions.contains(requisitePermission)) {
-                return false;
+        if(requisitePermissions == null) {
+            return true;
+        } else if(grantPermissions == null){
+            return false;
+        } else {
+            for (final String requisitePermission : requisitePermissions) {
+                if (!grantPermissions.contains(requisitePermission)) {
+                    return false;
+                }
             }
         }
-
         return true;
     }
 }

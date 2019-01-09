@@ -18,6 +18,7 @@
 package org.b3log.symphony.cache;
 
 import org.apache.commons.lang.time.DateUtils;
+import org.b3log.latke.Latkes;
 import org.b3log.latke.Keys;
 import org.b3log.latke.cache.Cache;
 import org.b3log.latke.cache.CacheFactory;
@@ -80,6 +81,21 @@ public class ArticleCache {
     private static final List<JSONObject> SIDE_RANDOM_ARTICLES = new ArrayList<>();
 
     /**
+     * Side random articles cache.
+     */
+    private static final List<JSONObject> QUESTION_ARTICLES = new ArrayList<>();
+
+    /**
+     * Side random articles cache.
+     */
+    private static final List<JSONObject> QUESTION_RANDOM_ARTICLES = new ArrayList<>();
+
+    /**
+     * Side random articles cache.
+     */
+    private static final List<JSONObject> RECRUIT_RANDOM_ARTICLES = new ArrayList<>();
+
+    /**
      * Perfect articles cache.
      */
     private static final List<JSONObject> PERFECT_ARTICLES = new ArrayList<>();
@@ -95,6 +111,13 @@ public class ArticleCache {
      * @return side hot articles
      */
     public List<JSONObject> getSideHotArticles() {
+
+        //如果不是生产环境，则加载SideHotArticles
+        if (Latkes.RuntimeMode.PRODUCTION != Latkes.getRuntimeMode()) {
+            loadSideHotArticles();
+        }
+        loadSideHotArticles();
+
         if (SIDE_HOT_ARTICLES.isEmpty()) {
             return Collections.emptyList();
         }
@@ -106,12 +129,14 @@ public class ArticleCache {
      * Loads side hot articles.
      */
     public void loadSideHotArticles() {
+
         final BeanManager beanManager = BeanManager.getInstance();
         final ArticleRepository articleRepository = beanManager.getReference(ArticleRepository.class);
         final ArticleQueryService articleQueryService = beanManager.getReference(ArticleQueryService.class);
 
         Stopwatchs.start("Load side hot articles");
         try {
+
             final String id = String.valueOf(DateUtils.addDays(new Date(), -7).getTime());
             final Query query = new Query().addSort(Article.ARTICLE_COMMENT_CNT, SortDirection.DESCENDING).
                     addSort(Keys.OBJECT_ID, SortDirection.ASCENDING).setCurrentPageNum(1).setPageSize(Symphonys.getInt("sideHotArticlesCnt"));
@@ -119,17 +144,16 @@ public class ArticleCache {
             final List<Filter> filters = new ArrayList<>();
             filters.add(new PropertyFilter(Keys.OBJECT_ID, FilterOperator.GREATER_THAN_OR_EQUAL, id));
             filters.add(new PropertyFilter(Article.ARTICLE_TYPE, FilterOperator.NOT_EQUAL, Article.ARTICLE_TYPE_C_DISCUSSION));
-            filters.add(new PropertyFilter(Article.ARTICLE_TAGS, FilterOperator.NOT_EQUAL, Tag.TAG_TITLE_C_SANDBOX));
 
             query.setFilter(new CompositeFilter(CompositeFilterOperator.AND, filters)).
                     addProjection(Article.ARTICLE_TITLE, String.class).
                     addProjection(Article.ARTICLE_PERMALINK, String.class).
                     addProjection(Article.ARTICLE_AUTHOR_ID, String.class).
-                    addProjection(Article.ARTICLE_ANONYMOUS, Integer.class);
+                    addProjection(Article.ARTICLE_TAGS, String.class);
 
             final JSONObject result = articleRepository.get(query);
             final List<JSONObject> articles = CollectionUtils.jsonArrayToList(result.optJSONArray(Keys.RESULTS));
-            articleQueryService.organizeArticles(UserExt.USER_AVATAR_VIEW_MODE_C_STATIC, articles);
+            articleQueryService.organizeArticles(UserExt.USER_AVATAR_VIEW_MODE_C_ORIGINAL, articles);
 
             SIDE_HOT_ARTICLES.clear();
             SIDE_HOT_ARTICLES.addAll(articles);
@@ -146,6 +170,12 @@ public class ArticleCache {
      * @return side random articles
      */
     public List<JSONObject> getSideRandomArticles() {
+
+        //如果不是生产环境，则加载SideRandomArticles
+        if (Latkes.RuntimeMode.PRODUCTION != Latkes.getRuntimeMode()) {
+            loadSideRandomArticles();
+        }
+
         int size = Symphonys.getInt("sideRandomArticlesCnt");
         if (1 > size) {
             return Collections.emptyList();
@@ -189,6 +219,184 @@ public class ArticleCache {
     }
 
     /**
+     * Gets side random articles.
+     *
+     * @return side random articles
+     */
+    public List<JSONObject> getQuestionArticles() {
+
+        //如果不是生产环境，则加载QuestionArticles
+        if (Latkes.RuntimeMode.PRODUCTION != Latkes.getRuntimeMode()) {
+            loadQuestionArticles();
+        }
+
+        int size = Symphonys.getInt("questionArticlesCnt");
+        if (1 > size) {
+            return Collections.emptyList();
+        }
+
+        if (QUESTION_ARTICLES.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        size = size > QUESTION_ARTICLES.size() ? QUESTION_ARTICLES.size() : size;
+
+        return JSONs.clone(QUESTION_ARTICLES.subList(0, size));
+    }
+
+    /**
+     * Loads side random articles.
+     */
+    public void loadQuestionArticles() {
+
+        final BeanManager beanManager = BeanManager.getInstance();
+        final ArticleRepository articleRepository = beanManager.getReference(ArticleRepository.class);
+        final ArticleQueryService articleQueryService = beanManager.getReference(ArticleQueryService.class);
+
+        Stopwatchs.start("Load question hot articles");
+        try {
+            final String id = String.valueOf(DateUtils.addDays(new Date(), -7).getTime());
+            final Query query = new Query().addSort(Article.ARTICLE_COMMENT_CNT, SortDirection.DESCENDING).
+                    addSort(Keys.OBJECT_ID, SortDirection.ASCENDING).setCurrentPageNum(1).setPageSize(Symphonys.getInt("questionArticlesCnt"));
+
+            final List<Filter> filters = new ArrayList<>();
+            filters.add(new PropertyFilter(Keys.OBJECT_ID, FilterOperator.GREATER_THAN_OR_EQUAL, id));
+            filters.add(new PropertyFilter(Article.ARTICLE_TYPE, FilterOperator.EQUAL, Article.ARTICLE_TYPE_C_QNA));
+
+            query.setFilter(new CompositeFilter(CompositeFilterOperator.AND, filters)).
+                    addProjection(Article.ARTICLE_TITLE, String.class).
+                    addProjection(Article.ARTICLE_PERMALINK, String.class).
+                    addProjection(Article.ARTICLE_AUTHOR_ID, String.class).
+                    addProjection(Article.ARTICLE_QNA_OFFER_POINT, String.class);
+
+            final JSONObject result = articleRepository.get(query);
+            final List<JSONObject> articles = CollectionUtils.jsonArrayToList(result.optJSONArray(Keys.RESULTS));
+            articleQueryService.organizeArticles(UserExt.USER_AVATAR_VIEW_MODE_C_ORIGINAL, articles);
+
+            QUESTION_ARTICLES.clear();
+            QUESTION_ARTICLES.addAll(articles);
+        } catch (final RepositoryException e) {
+            LOGGER.log(Level.ERROR, "Loads question hot articles failed", e);
+        } finally {
+            Stopwatchs.end();
+        }
+    }
+
+    /**
+     * Gets side random articles.
+     *
+     * @return side random articles
+     */
+    public List<JSONObject> getQuestionRandomArticles() {
+
+        //如果不是生产环境，则加载QuestionRandomArticles
+        if (Latkes.RuntimeMode.PRODUCTION != Latkes.getRuntimeMode()) {
+            loadQuestionRandomArticles();
+        }
+
+        int size = Symphonys.getInt("questionRandomArticlesCnt");
+        if (1 > size) {
+            return Collections.emptyList();
+        }
+
+        if (QUESTION_RANDOM_ARTICLES.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        size = size > QUESTION_RANDOM_ARTICLES.size() ? QUESTION_RANDOM_ARTICLES.size() : size;
+        Collections.shuffle(QUESTION_RANDOM_ARTICLES);
+
+        return JSONs.clone(QUESTION_RANDOM_ARTICLES.subList(0, size));
+    }
+
+    /**
+     * Loads side random articles.
+     */
+    public void loadQuestionRandomArticles() {
+
+        final int size = Symphonys.getInt("questionRandomArticlesCnt");
+
+        if (1 > size) {
+            return;
+        }
+
+        final BeanManager beanManager = BeanManager.getInstance();
+        final ArticleRepository articleRepository = beanManager.getReference(ArticleRepository.class);
+        final ArticleQueryService articleQueryService = beanManager.getReference(ArticleQueryService.class);
+
+        Stopwatchs.start("Load question random articles");
+        try {
+            final List<JSONObject> articles = articleRepository.getQuestionRandomly(size * 5);
+            articleQueryService.organizeArticles(UserExt.USER_AVATAR_VIEW_MODE_C_ORIGINAL , articles);
+
+            QUESTION_RANDOM_ARTICLES.clear();
+            QUESTION_RANDOM_ARTICLES.addAll(articles);
+        } catch (final Exception e) {
+            LOGGER.log(Level.ERROR, "Loads question random articles failed", e);
+        } finally {
+            Stopwatchs.end();
+        }
+    }
+
+    /**
+     * Gets recruit random articles.
+     *
+     * @return side random articles
+     */
+    public List<JSONObject> getRecruitRandomArticles() {
+
+        //如果不是生产环境，则加载RecruitRandomArticles
+        if (Latkes.RuntimeMode.PRODUCTION != Latkes.getRuntimeMode()) {
+            loadRecruitRandomArticles();
+        }
+
+        int size = Symphonys.getInt("recruitRandomArticlesCnt");
+
+        if (1 > size) {
+            return Collections.emptyList();
+        }
+
+        if (RECRUIT_RANDOM_ARTICLES.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        size = size > RECRUIT_RANDOM_ARTICLES.size() ? RECRUIT_RANDOM_ARTICLES.size() : size;
+        Collections.shuffle(RECRUIT_RANDOM_ARTICLES);
+
+        return JSONs.clone(RECRUIT_RANDOM_ARTICLES.subList(0, size));
+    }
+
+    /**
+     * Loads recruit random articles.
+     */
+    public void loadRecruitRandomArticles() {
+
+        final int size = Symphonys.getInt("recruitRandomArticlesCnt");
+
+        if (1 > size) {
+            return;
+        }
+
+        final BeanManager beanManager = BeanManager.getInstance();
+        final ArticleRepository articleRepository = beanManager.getReference(ArticleRepository.class);
+        final ArticleQueryService articleQueryService = beanManager.getReference(ArticleQueryService.class);
+
+        Stopwatchs.start("Load side random articles");
+
+        try {
+            final List<JSONObject> articles = articleRepository.getRecruitRandomly(size * 5);
+            articleQueryService.organizeArticles(UserExt.USER_AVATAR_VIEW_MODE_C_STATIC, articles);
+
+            RECRUIT_RANDOM_ARTICLES.clear();
+            RECRUIT_RANDOM_ARTICLES.addAll(articles);
+        } catch (final RepositoryException e) {
+            LOGGER.log(Level.ERROR, "Loads side random articles failed", e);
+        } finally {
+            Stopwatchs.end();
+        }
+    }
+
+    /**
      * Gets an article abstract by the specified article id.
      *
      * @param articleId the specified article id
@@ -209,6 +417,12 @@ public class ArticleCache {
      * @return side random articles
      */
     public List<JSONObject> getPerfectArticles() {
+
+        //如果不是生产环境，则加载PerfectArticles
+        if (Latkes.RuntimeMode.PRODUCTION != Latkes.getRuntimeMode()) {
+            loadPerfectArticles();
+        }
+
         if (PERFECT_ARTICLES.isEmpty()) {
             return Collections.emptyList();
         }

@@ -1,30 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-    Description: Symphony POM.
-    Version: 2.16.6.119, Dec 7, 2018
-    Author: Liang Ding
-    Author: Zephyr
--->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.b3log</groupId>
     <artifactId>symphony</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <version>3.4.5</version>
     <name>Symphony</name>
     <url>https://sym.b3log.org</url>
-    <description>
-        一款用 Java 实现的现代化社区（论坛/BBS/社交网络/博客）平台。
-        A modern community (forum/BBS/SNS/blog) platform written in Java.
-    </description>
+    <description> </description>
     <inceptionYear>2012</inceptionYear>
 
     <properties>
         <latke.version>2.4.37</latke.version>
-
         <servlet.version>3.1.0</servlet.version>
+        <websocket.version>1.1</websocket.version>
         <jetty.version>9.4.14.v20181114</jetty.version>
         <slf4j.version>1.7.24</slf4j.version>
         <mysql-connector-java.version>8.0.12</mysql-connector-java.version>
@@ -39,13 +31,14 @@
         <owasp.version>1.2.2</owasp.version>
         <snakeyaml.version>1.18</snakeyaml.version>
         <freemarker.version>2.3.28</freemarker.version>
-        <javax.mail.version>1.6.2</javax.mail.version>
-
+        <javax.mailapi.version>1.6.2</javax.mailapi.version>
+        <javax.mail.version>1.4.5</javax.mail.version>
+        <com.sun.mail.version>1.6.0</com.sun.mail.version>
         <license-maven-plugin.version>3.0</license-maven-plugin.version>
         <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
         <maven-war-plugin.version>3.2.2</maven-war-plugin.version>
+        <org-ow2-asm.version>6.2</org-ow2-asm.version>
         <testng.version>6.14.3</testng.version>
-
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -62,67 +55,6 @@
             <url>https://www.gnu.org/licenses/agpl-3.0.txt</url>
         </license>
     </licenses>
-
-    <developers>
-        <developer>
-            <id>d@b3log.org</id>
-            <name>Liang Ding</name>
-            <email>d@b3log.org</email>
-            <url>http://88250.b3log.org</url>
-            <roles>
-                <role>Lead</role>
-                <role>Initial Committer</role>
-            </roles>
-            <organization>B3log</organization>
-            <organizationUrl>https://b3log.org</organizationUrl>
-            <timezone>+8</timezone>
-        </developer>
-
-        <developer>
-            <id>v@b3log.org</id>
-            <name>Liyuan Li</name>
-            <email>v@b3log.org</email>
-            <url>http://vanessa.b3log.org</url>
-            <roles>
-                <role>Committer</role>
-            </roles>
-            <organization>B3log</organization>
-            <organizationUrl>https://b3log.org</organizationUrl>
-            <timezone>+8</timezone>
-        </developer>
-
-        <developer>
-            <id>wmainlove@gmail.com</id>
-            <name>Liceng Yao</name>
-            <email>wmainlove@gmail.com</email>
-            <url>http://love.b3log.org</url>
-            <roles>
-                <role>Committer</role>
-            </roles>
-            <organization>B3log</organization>
-            <organizationUrl>https://b3log.org</organizationUrl>
-            <timezone>+8</timezone>
-        </developer>
-
-        <developer>
-            <id>O2895205695@gmail.com</id>
-            <name>Zephyr Cheung</name>
-            <email>O2895205695@gmail.com</email>
-            <url>http://zephyr.b3log.org</url>
-            <roles>
-                <role>Committer</role>
-            </roles>
-            <organization>B3log</organization>
-            <organizationUrl>https://b3log.org</organizationUrl>
-            <timezone>+8</timezone>
-        </developer>
-
-    </developers>
-
-    <issueManagement>
-        <system>GitHub Issues</system>
-        <url>https://github.com/b3log/symphony/issues</url>
-    </issueManagement>
 
     <scm>
         <url>https://github.com/b3log/symphony</url>
@@ -144,7 +76,6 @@
                     <groupId>com.h2database</groupId>
                     <artifactId>h2</artifactId>
                 </exclusion>
-
                 <exclusion>
                     <groupId>org.jboss</groupId>
                     <artifactId>jboss-vfs</artifactId>
@@ -167,7 +98,7 @@
         <dependency>
             <groupId>javax.websocket</groupId>
             <artifactId>javax.websocket-api</artifactId>
-            <version>1.1</version>
+            <version>${websocket.version}</version>
         </dependency>
 
         <dependency>
@@ -277,17 +208,25 @@
             <artifactId>encoder</artifactId>
             <version>${owasp.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
             <version>${snakeyaml.version}</version>
         </dependency>
-
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>javax.mail-api</artifactId>
-            <version>${javax.mail.version}</version>
+            <version>${javax.mailapi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.mail</groupId >
+            <artifactId>mail</artifactId >
+            <version>${javax.mail.version}</version >
+        </dependency>
+        <dependency>
+            <groupId>com.sun.mail</groupId >
+            <artifactId>javax.mail</artifactId >
+            <version>${com.sun.mail.version}</version >
         </dependency>
 
     </dependencies>
@@ -372,17 +311,6 @@
                     </properties>
                     <encoding>UTF-8</encoding>
                 </configuration>
-                <executions>
-                    <!-- 
-                    eclipse sucks!!
-                    <execution>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>format</goal>
-                        </goals>
-                    </execution>
-                    -->
-                </executions>
             </plugin>
 
             <plugin>
@@ -401,10 +329,15 @@
                         </resource>
                     </webResources>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.ow2.asm</groupId>
+                        <artifactId>asm</artifactId>
+                        <version>${org-ow2-asm.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
-
         </plugins>
-
         <finalName>symphony</finalName>
     </build>
 
@@ -412,7 +345,6 @@
         <profile>
             <id>ci</id>
         </profile>
-
         <profile>
             <id>dev</id>
             <activation>
@@ -424,7 +356,6 @@
                     <url>http://maven.aliyun.com/nexus/content/groups/public</url>
                 </repository>
             </repositories>
-
             <pluginRepositories>
                 <pluginRepository>
                     <id>aliyun</id>

@@ -1,22 +1,4 @@
-<#--
 
-    Symphony - A modern community (forum/BBS/SNS/blog) platform written in Java.
-    Copyright (C) 2012-2018, b3log.org & hacpai.com
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Affero General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Affero General Public License for more details.
-
-    You should have received a copy of the GNU Affero General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
--->
 <div class="nav">
     <h1 aria-label="${symphonyLabel}" class="tooltipped tooltipped-s">
         <a href="${servePath}">
@@ -24,6 +6,14 @@
         </a>
     </h1>
     <div class="nav-tabs">
+        <a href="${servePath}/" <#if selected?? && 'index' == selected > class="current selected"</#if>>
+            <svg>
+                <use xlink:href="#iconHome">
+                    <svg id="iconHome" viewBox="0 0 32 32" width="100%" height="100%">
+                        <path d="M32 18.451l-16-12.42-16 12.42v-5.064l16-12.42 16 12.42zM28 18v12h-8v-8h-8v8h-8v-12l12-9z"></path>
+                    </svg>
+                </use>
+            </svg> 首页</a>
         <#list domains as domain>
         <a pjax-title="${domain.domainTitle} - ${domainLabel} - ${symphonyLabel}"
            href="${servePath}/domain/${domain.domainURI}"<#if selected?? && selected == domain.domainURI>

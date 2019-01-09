@@ -315,11 +315,27 @@ public class IndexProcessor {
         final Map<String, Object> dataModel = renderer.getDataModel();
 
         final int avatarViewMode = (int) request.getAttribute(UserExt.USER_AVATAR_VIEW_MODE);
+
         final List<JSONObject> recentArticles = articleQueryService.getIndexRecentArticles(avatarViewMode);
         dataModel.put(Common.RECENT_ARTICLES, recentArticles);
 
         final List<JSONObject> perfectArticles = articleQueryService.getIndexPerfectArticles();
         dataModel.put(Common.PERFECT_ARTICLES, perfectArticles);
+
+        final List<JSONObject> sideHotArticles = articleQueryService.getSideHotArticles();
+        dataModel.put(Common.SIDE_HOT_ARTICLES, sideHotArticles);
+
+        final List<JSONObject> sideRandomArticles = articleQueryService.getSideRandomArticles();
+        dataModel.put(Common.SIDE_RANDOM_ARTICLES, sideRandomArticles);
+
+        final List<JSONObject> questionArticles = articleQueryService.getQuestionArticles();
+        dataModel.put(Common.QUESTION_ARTICLES, questionArticles);
+
+        final List<JSONObject> questionRandomArticles = articleQueryService.getQuestionRandomArticles();
+        dataModel.put(Common.QUESTION_RANDOM_ARTICLES, questionRandomArticles);
+
+        final List<JSONObject> recruitRandomArticles = articleQueryService.getRecruitRandomArticles();
+        dataModel.put(Common.RECRUIT_RANDOM_ARTICLES, recruitRandomArticles);
 
         dataModelService.fillHeaderAndFooter(request, response, dataModel);
         dataModelService.fillIndexTags(dataModel);

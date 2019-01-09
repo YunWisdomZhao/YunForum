@@ -108,7 +108,9 @@ public class PermissionCheck extends ProcessAdvice {
 
             try {
                 final MatchResult matchResult = RouteHandler.doMatch(requestURI, method);
-                rule += matchResult.getMatchedUriTemplate() + "." + method;
+                if(matchResult!=null){
+                    rule += matchResult.getMatchedUriTemplate() + "." + method;
+                }
             } catch (final Exception e) {
                 LOGGER.log(Level.ERROR, "Match method failed", e);
 
@@ -117,7 +119,7 @@ public class PermissionCheck extends ProcessAdvice {
 
             final Set<String> requisitePermissions = URL_PERMISSION_RULES.get(rule);
             if (null == requisitePermissions) {
-                return;
+//                return;
             }
 
             final JSONObject user = (JSONObject) request.getAttribute(Common.CURRENT_USER);

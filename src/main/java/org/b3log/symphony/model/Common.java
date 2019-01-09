@@ -532,6 +532,21 @@ public final class Common {
     public static final String LATEST_ARTICLES = "latestArticles";
 
     /**
+     * Key of latest articles.
+     */
+    public static final String QUESTION_ARTICLES = "questionArticles";
+
+    /**
+     * Key of question random articles.
+     */
+    public static final String QUESTION_RANDOM_ARTICLES = "questionRandomArticles";
+
+    /**
+     * Key of recruit random articles.
+     */
+    public static final String RECRUIT_RANDOM_ARTICLES = "recruitRandomArticles";
+
+    /**
      * Key of index articles.
      */
     public static final String INDEX_ARTICLES = "indexArticles";

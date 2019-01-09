@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "symphony",
+                "projectName": "symphony",
+                "workingDirectory": "/Users/mac/Workspaces/Blog/SymForum",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "symphony",
+                "projectName": "symphony",
+                "workingDirectory": "/Users/mac/Workspaces/Blog/SymForum",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}

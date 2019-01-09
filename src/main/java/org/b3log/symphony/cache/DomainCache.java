@@ -73,9 +73,7 @@ public class DomainCache {
             if (DOMAINS.isEmpty()) {
                 return Collections.emptyList();
             }
-
             final int end = fetchSize >= DOMAINS.size() ? DOMAINS.size() : fetchSize;
-
             return JSONs.clone(DOMAINS.subList(0, end));
         } finally {
             LOCK.readLock().unlock();
