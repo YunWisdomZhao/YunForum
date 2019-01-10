@@ -116,7 +116,6 @@ public class ArticleCache {
         if (Latkes.RuntimeMode.PRODUCTION != Latkes.getRuntimeMode()) {
             loadSideHotArticles();
         }
-        loadSideHotArticles();
 
         if (SIDE_HOT_ARTICLES.isEmpty()) {
             return Collections.emptyList();
