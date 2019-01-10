@@ -1,6 +1,5 @@
-<img src="https://cloud.githubusercontent.com/assets/873584/19897669/e6a6f5ce-a093-11e6-8cf3-8e5c2acea033.png">  
 
-## 简介
+## YunForum简介
 
 基于[Symphony](https://sym.b3log.org)（[ˈsɪmfəni]，n.交响乐）社区平台进行了部分修改，因为它：
 
@@ -39,7 +38,7 @@
 * 社区版：使用 AGPLv3 开源，如果你选择使用社区版，则必须完全遵守 AGPLv3 的相关条款
 * 商业版：闭源，暂不提供
 
-## YunForum界面展示
+## 界面展示
 
 ### 首页
 
