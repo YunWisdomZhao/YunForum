@@ -54,7 +54,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Breezemoon processor. https://github.com/b3log/symphony/issues/507
+ * Breezemoon processor. https://github.com/YunWisdomZhao/BBS/issues/507
  *
  * <ul>
  * <li>Shows watch breezemoons (/watch/breezemoons), GET</li>

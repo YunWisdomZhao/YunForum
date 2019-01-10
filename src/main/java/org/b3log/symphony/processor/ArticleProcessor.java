@@ -784,7 +784,7 @@ public class ArticleProcessor {
         final int windowSize = Symphonys.getInt("articleCommentsWindowSize");
         final int commentCnt = article.getInt(Article.ARTICLE_COMMENT_CNT);
         final int pageCount = (int) Math.ceil((double) commentCnt / (double) pageSize);
-        // 回帖分页 SEO https://github.com/b3log/symphony/issues/813
+        // 回帖分页 SEO https://github.com/YunWisdomZhao/BBS/issues/813
         if (UserExt.USER_COMMENT_VIEW_MODE_C_TRADITIONAL == cmtViewMode) {
             if (0 < pageCount && pageNum > pageCount) {
                 pageNum = pageCount;
@@ -835,7 +835,7 @@ public class ArticleProcessor {
 
                 comment.put(Common.REWARED_COUNT, rewardQueryService.rewardedCount(commentId, Reward.TYPE_C_COMMENT));
 
-                // https://github.com/b3log/symphony/issues/682
+                // https://github.com/YunWisdomZhao/BBS/issues/682
                 if (Comment.COMMENT_VISIBLE_C_AUTHOR == comment.optInt(Comment.COMMENT_VISIBLE)) {
                     final String commentAuthorId = comment.optString(Comment.COMMENT_AUTHOR_ID);
                     if (!isLoggedIn || (!StringUtils.equals(currentUserId, commentAuthorId) && !StringUtils.equals(currentUserId, authorId))) {
@@ -871,7 +871,7 @@ public class ArticleProcessor {
 
                 comment.put(Common.REWARED_COUNT, rewardQueryService.rewardedCount(commentId, Reward.TYPE_C_COMMENT));
 
-                // https://github.com/b3log/symphony/issues/682
+                // https://github.com/YunWisdomZhao/BBS/issues/682
                 if (Comment.COMMENT_VISIBLE_C_AUTHOR == comment.optInt(Comment.COMMENT_VISIBLE)) {
                     final String commentAuthorId = comment.optString(Comment.COMMENT_AUTHOR_ID);
                     if (!isLoggedIn || (!StringUtils.equals(currentUserId, commentAuthorId) && !StringUtils.equals(currentUserId, authorId))) {

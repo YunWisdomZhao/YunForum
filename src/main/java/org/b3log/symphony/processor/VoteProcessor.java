@@ -186,7 +186,7 @@ public class VoteProcessor {
         } else {
             voteMgmtService.voteDown(userId, dataId, Vote.DATA_TYPE_C_COMMENT);
 
-            // https://github.com/b3log/symphony/issues/611
+            // https://github.com/YunWisdomZhao/BBS/issues/611
 //            final JSONObject comment = commentQueryService.getComment(dataId);
 //            final String commenterId = comment.optString(Comment.COMMENT_AUTHOR_ID);
 //
@@ -297,7 +297,7 @@ public class VoteProcessor {
         } else {
             voteMgmtService.voteDown(userId, dataId, Vote.DATA_TYPE_C_ARTICLE);
 
-            // https://github.com/b3log/symphony/issues/611
+            // https://github.com/YunWisdomZhao/BBS/issues/611
 //            final JSONObject article = articleQueryService.getArticle(dataId);
 //            final String articleAuthorId = article.optString(Article.ARTICLE_AUTHOR_ID);
 //

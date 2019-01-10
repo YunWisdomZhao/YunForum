@@ -25,7 +25,7 @@ import org.json.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * This class defines all operation model relevant keys. https://github.com/b3log/symphony/issues/786
+ * This class defines all operation model relevant keys. https://github.com/YunWisdomZhao/BBS/issues/786
  *
  * @author <a href="http://88250.b3log.org">Liang Ding</a>
  * @version 1.0.0.0, Nov 19, 2018

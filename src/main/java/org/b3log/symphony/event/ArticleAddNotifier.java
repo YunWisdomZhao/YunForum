@@ -133,7 +133,7 @@ public class ArticleAddNotifier extends AbstractEventListener<JSONObject> {
                 final List<JSONObject> followerUsers = (List<JSONObject>) followerUsersResult.opt(Keys.RESULTS);
                 final long thirtyDaysAgo = DateUtils.addDays(new Date(), -30).getTime();
                 for (final JSONObject followerUser : followerUsers) {
-                    // 30 天未登录的用户不发关注发帖通知 https://github.com/b3log/symphony/issues/820
+                    // 30 天未登录的用户不发关注发帖通知 https://github.com/YunWisdomZhao/BBS/issues/820
                     final long latestLoginTime = followerUser.optLong(UserExt.USER_LATEST_LOGIN_TIME);
                     if (latestLoginTime < thirtyDaysAgo) {
                         continue;

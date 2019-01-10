@@ -248,7 +248,7 @@ public class ArticleMgmtService {
      * <li>No thanks</li>
      * <li>In valid status</li>
      * </ul>
-     * Sees https://github.com/b3log/symphony/issues/450 for more details.
+     * Sees https://github.com/YunWisdomZhao/BBS/issues/450 for more details.
      *
      * @param articleId the given article id
      * @throws ServiceException service exception
@@ -528,7 +528,7 @@ public class ArticleMgmtService {
         final int qnaOfferPoint = requestJSONObject.optInt(Article.ARTICLE_QNA_OFFER_POINT, 0);
 
         final int articleType = requestJSONObject.optInt(Article.ARTICLE_TYPE, Article.ARTICLE_TYPE_C_NORMAL);
-        if (Article.ARTICLE_TYPE_C_QNA == articleType && 20 > qnaOfferPoint) { // https://github.com/b3log/symphony/issues/672
+        if (Article.ARTICLE_TYPE_C_QNA == articleType && 20 > qnaOfferPoint) { // https://github.com/YunWisdomZhao/BBS/issues/672
             throw new ServiceException(langPropsService.get("invalidQnAOfferPointLabel"));
         }
 
@@ -622,7 +622,7 @@ public class ArticleMgmtService {
 
             String articleContent = requestJSONObject.optString(Article.ARTICLE_CONTENT);
             articleContent = Emotions.toAliases(articleContent);
-            //articleContent = StringUtils.trim(articleContent) + " "; https://github.com/b3log/symphony/issues/389
+            //articleContent = StringUtils.trim(articleContent) + " "; https://github.com/YunWisdomZhao/BBS/issues/389
             articleContent = StringUtils.replace(articleContent, langPropsService.get("uploadingLabel", Locale.SIMPLIFIED_CHINESE), "");
             articleContent = StringUtils.replace(articleContent, langPropsService.get("uploadingLabel", Locale.US), "");
             article.put(Article.ARTICLE_CONTENT, articleContent);
@@ -923,7 +923,7 @@ public class ArticleMgmtService {
 
             String articleContent = requestJSONObject.optString(Article.ARTICLE_CONTENT);
             articleContent = Emotions.toAliases(articleContent);
-            //articleContent = StringUtils.trim(articleContent) + " "; https://github.com/b3log/symphony/issues/389
+            //articleContent = StringUtils.trim(articleContent) + " "; https://github.com/YunWisdomZhao/BBS/issues/389
             articleContent = articleContent.replace(langPropsService.get("uploadingLabel", Locale.SIMPLIFIED_CHINESE), "");
             articleContent = articleContent.replace(langPropsService.get("uploadingLabel", Locale.US), "");
 
@@ -955,7 +955,7 @@ public class ArticleMgmtService {
                 ua = StringUtils.substring(ua, 0, Common.MAX_LENGTH_UA);
             }
             oldArticle.put(Article.ARTICLE_UA, ua);
-            oldArticle.put(Article.ARTICLE_AUDIO_URL, ""); // 小薇语音预览更新 https://github.com/b3log/symphony/issues/791
+            oldArticle.put(Article.ARTICLE_AUDIO_URL, ""); // 小薇语音预览更新 https://github.com/YunWisdomZhao/BBS/issues/791
 
             articleRepository.update(articleId, oldArticle);
 
@@ -1063,7 +1063,7 @@ public class ArticleMgmtService {
                 }
             }
 
-            article.put(Article.ARTICLE_AUDIO_URL, ""); // 小薇语音预览更新 https://github.com/b3log/symphony/issues/791
+            article.put(Article.ARTICLE_AUDIO_URL, ""); // 小薇语音预览更新 https://github.com/YunWisdomZhao/BBS/issues/791
 
             userRepository.update(authorId, author);
             articleRepository.update(articleId, article);

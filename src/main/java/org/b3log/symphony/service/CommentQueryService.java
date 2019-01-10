@@ -259,7 +259,7 @@ public class CommentQueryService {
                     comment.optString(Comment.COMMENT_ON_ARTICLE_ID), commentId,
                     commentViewMode, pageSize));
 
-            // https://github.com/b3log/symphony/issues/682
+            // https://github.com/YunWisdomZhao/BBS/issues/682
             if (Comment.COMMENT_VISIBLE_C_AUTHOR == comment.optInt(Comment.COMMENT_VISIBLE)) {
                 final String commentAuthorId = comment.optString(Comment.COMMENT_AUTHOR_ID);
                 final String articleId = comment.optString(Comment.COMMENT_ON_ARTICLE_ID);
@@ -326,7 +326,7 @@ public class CommentQueryService {
                         commentViewMode, pageSize));
                 reply.put(Comment.COMMENT_VISIBLE, comment.optInt(Comment.COMMENT_VISIBLE));
 
-                // https://github.com/b3log/symphony/issues/682
+                // https://github.com/YunWisdomZhao/BBS/issues/682
                 if (Comment.COMMENT_VISIBLE_C_AUTHOR == comment.optInt(Comment.COMMENT_VISIBLE)) {
                     final String commentAuthorId = comment.optString(Comment.COMMENT_AUTHOR_ID);
                     final String articleId = comment.optString(Comment.COMMENT_ON_ARTICLE_ID);
@@ -600,7 +600,7 @@ public class CommentQueryService {
 
                 processCommentContent(comment);
 
-                // https://github.com/b3log/symphony/issues/682
+                // https://github.com/YunWisdomZhao/BBS/issues/682
                 if (Comment.COMMENT_VISIBLE_C_AUTHOR == comment.optInt(Comment.COMMENT_VISIBLE)) {
                     if (StringUtils.isBlank(currentUserId) || (!StringUtils.equals(currentUserId, userId) && !StringUtils.equals(currentUserId, articleAuthorId))) {
                         comment.put(Comment.COMMENT_CONTENT, langPropsService.get("onlySelfAndArticleAuthorVisibleLabel"));

@@ -65,7 +65,7 @@ public class InitMgmtService {
     private static Set<String> ADMIN_PERMISSIONS = new HashSet<>();
     private static Set<String> LEADER_PERMISSIONS = new HashSet<>();
 
-    static { // Init built-in roles' permissions, see https://github.com/b3log/symphony/issues/358 for more details
+    static { // Init built-in roles' permissions, see https://github.com/YunWisdomZhao/BBS/issues/358 for more details
         // Visitor
         // no permissions at present
 
@@ -660,7 +660,7 @@ public class InitMgmtService {
             tag = tagRepository.get(tagId);
             tag.put(Tag.TAG_URI, "Sym");
             tag.put(Tag.TAG_ICON_PATH, "sym.png");
-            tag.put(Tag.TAG_DESCRIPTION, "[Sym](https://github.com/b3log/symphony) 是一个用 [Java] 实现的现代化社区（论坛/社交网络/博客）平台，“下一代的社区系统，为未来而构建”。");
+            tag.put(Tag.TAG_DESCRIPTION, "[Sym](https://github.com/YunWisdomZhao/BBS) 是一个用 [Java] 实现的现代化社区（论坛/社交网络/博客）平台，“下一代的社区系统，为未来而构建”。");
             tagMgmtService.updateTag(tagId, tag);
 
             tagTitle = "Solo";

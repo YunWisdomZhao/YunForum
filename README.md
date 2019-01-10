@@ -369,7 +369,7 @@ DROP TABLE IF EXISTS `symphony_link`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `symphony_link` (
   `oId` varchar(19) NOT NULL COMMENT '主键',
-  `linkAddrHash` varchar(64) NOT NULL COMMENT '链接地址 Hash https://github.com/b3log/symphony/issues/773',
+  `linkAddrHash` varchar(64) NOT NULL COMMENT '链接地址 Hash https://github.com/YunWisdomZhao/BBS/issues/773',
   `linkAddr` text NOT NULL COMMENT '链接地址',
   `linkTitle` text NOT NULL COMMENT '链接标题',
   `linkSubmitCnt` int(11) NOT NULL COMMENT '提交计数',
@@ -894,7 +894,7 @@ CREATE TABLE `symphony_user` (
   `userTimezone` varchar(64) NOT NULL COMMENT '用户所在时区',
   `userGuideStep` int(11) NOT NULL COMMENT '新注册后向导到达第几步',
   `userForwardPageStatus` int(11) NOT NULL COMMENT '0：使用重定向页面，1：禁用重定向页面',
-  `userIndexRedirectURL` varchar(255) NOT NULL COMMENT '自定义首页跳转 https://github.com/b3log/symphony/issues/774',
+  `userIndexRedirectURL` varchar(255) NOT NULL COMMENT '自定义首页跳转 https://github.com/YunWisdomZhao/BBS/issues/774',
   PRIMARY KEY (`oId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -984,7 +984,7 @@ CREATE TABLE `symphony_visit` (
   `visitCreated` bigint(20) NOT NULL COMMENT '统计时间',
   `visitExpired` bigint(20) NOT NULL COMMENT '统计过期时间',
   PRIMARY KEY (`oId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='浏览表 https://github.com/b3log/symphony/issues/687';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='浏览表 https://github.com/YunWisdomZhao/BBS/issues/687';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

@@ -215,7 +215,7 @@ public class CommentMgmtService {
      * <li>No ups, downs</li>
      * <li>No thanks</li>
      * </ul>
-     * Sees https://github.com/b3log/symphony/issues/451 for more details.
+     * Sees https://github.com/YunWisdomZhao/BBS/issues/451 for more details.
      *
      * @param commentId the given commentId id
      * @throws ServiceException service exception
@@ -484,7 +484,7 @@ public class CommentMgmtService {
             }
 
             content = Emotions.toAliases(content);
-            content = content.replaceAll("\\s+$", ""); // https://github.com/b3log/symphony/issues/389
+            content = content.replaceAll("\\s+$", ""); // https://github.com/YunWisdomZhao/BBS/issues/389
             content += " "; // in case of tailing @user
             content = content.replace(langPropsService.get("uploadingLabel", Locale.SIMPLIFIED_CHINESE), "");
             content = content.replace(langPropsService.get("uploadingLabel", Locale.US), "");
@@ -617,7 +617,7 @@ public class CommentMgmtService {
 
             String content = comment.optString(Comment.COMMENT_CONTENT);
             content = Emotions.toAliases(content);
-            content = content.replaceAll("\\s+$", ""); // https://github.com/b3log/symphony/issues/389
+            content = content.replaceAll("\\s+$", ""); // https://github.com/YunWisdomZhao/BBS/issues/389
             content += " "; // in case of tailing @user
             content = content.replace(langPropsService.get("uploadingLabel", Locale.SIMPLIFIED_CHINESE), "");
             content = content.replace(langPropsService.get("uploadingLabel", Locale.US), "");
@@ -697,7 +697,7 @@ public class CommentMgmtService {
 
             String content = comment.optString(Comment.COMMENT_CONTENT);
             content = Emotions.toAliases(content);
-            content = content.replaceAll("\\s+$", ""); // https://github.com/b3log/symphony/issues/389
+            content = content.replaceAll("\\s+$", ""); // https://github.com/YunWisdomZhao/BBS/issues/389
             content += " "; // in case of tailing @user
             content = content.replace(langPropsService.get("uploadingLabel", Locale.SIMPLIFIED_CHINESE), "");
             content = content.replace(langPropsService.get("uploadingLabel", Locale.US), "");

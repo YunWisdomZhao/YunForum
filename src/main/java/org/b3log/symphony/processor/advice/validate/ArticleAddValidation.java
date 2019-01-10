@@ -115,7 +115,7 @@ public class ArticleAddValidation extends ProcessAdvice {
         articleTags = Tag.formatTags(articleTags);
 
         if (StringUtils.isBlank(articleTags)) {
-            // 发帖时标签改为非必填 https://github.com/b3log/symphony/issues/811
+            // 发帖时标签改为非必填 https://github.com/YunWisdomZhao/BBS/issues/811
             articleTags = "待分类";
         }
 

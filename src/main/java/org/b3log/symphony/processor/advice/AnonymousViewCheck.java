@@ -159,7 +159,7 @@ public class AnonymousViewCheck extends ProcessAdvice {
             if (!"0".equals(option.optString(Option.OPTION_VALUE))) {
                 final JSONObject currentUser = (JSONObject) request.getAttribute(Common.CURRENT_USER);
 
-                // https://github.com/b3log/symphony/issues/373
+                // https://github.com/YunWisdomZhao/BBS/issues/373
                 final String cookieNameVisits = "anonymous-visits";
                 final Cookie visitsCookie = getCookie(request, cookieNameVisits);
 

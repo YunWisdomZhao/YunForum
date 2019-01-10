@@ -300,7 +300,7 @@ public class IndexProcessor {
         final HttpServletResponse response = context.getResponse();
         final JSONObject currentUser = (JSONObject) request.getAttribute(Common.CURRENT_USER);
         if (null != currentUser) {
-            // 自定义首页跳转 https://github.com/b3log/symphony/issues/774
+            // 自定义首页跳转 https://github.com/YunWisdomZhao/BBS/issues/774
             final String indexRedirectURL = currentUser.optString(UserExt.USER_INDEX_REDIRECT_URL);
             if (StringUtils.isNotBlank(indexRedirectURL)) {
                 context.sendRedirect(indexRedirectURL);

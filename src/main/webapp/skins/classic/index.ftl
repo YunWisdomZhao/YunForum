@@ -91,14 +91,18 @@
     <div class="wrapper index__login">
         <div class="fn__flex-1 text">
             <h2>
-                欢迎来到Symphony
+                欢迎来到云图
             </h2>
             <br>
             <div class="ft-gray">
                 我们正在构建一个活跃的小众社区，大家在这里相互信任，以平等 • 自由 • 奔放的价值观进行分享交流。最终，希望大家能够找到与自己志同道合的伙伴，共同成长。
             </div>
             <br>
+            <#if !isLoggedIn>
             <a href="javascript:Util.goRegister()" target="_self" class="btn green">注册</a> &nbsp; &nbsp;
+            <#else>
+            <a href="${servePath}/tag/%E8%AF%BE%E5%A0%82" target="_self" class="btn purple">云课堂</a>&nbsp; &nbsp;
+            </#if>
             <a href="${servePath}/article/1546929099122" class="btn red">关于</a>
         </div>
         <div class="fn__flex-1 bg"></div>
@@ -379,6 +383,8 @@
 <#include "footer.ftl">
 <script src="${staticServePath}/js/channel${miniPostfix}.js?${staticResourceVersion}"></script>
 <script type="text/javascript">
+
+$("#audios")[0].volume = 0.1;
 $('.metro-item').height($('.metro-item').width());
 
 // tag click

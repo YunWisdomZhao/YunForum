@@ -22,7 +22,7 @@ import java.util.Set;
 /**
  * This class defines all permission model relevant keys.
  * <p>
- * See <a href="https://github.com/b3log/symphony/issues/337">#337</a> for more details.
+ * See <a href="https://github.com/YunWisdomZhao/BBS/issues/337">#337</a> for more details.
  * </p>
  *
  * @author <a href="http://88250.b3log.org">Liang Ding</a>

@@ -108,7 +108,7 @@ public final class Option {
     public static final String ID_C_MISC_LANGUAGE = "miscLanguage";
 
     /**
-     * Key of article visit count mode. https://github.com/b3log/symphony/issues/694
+     * Key of article visit count mode. https://github.com/YunWisdomZhao/BBS/issues/694
      */
     public static final String ID_C_MISC_ARTICLE_VISIT_COUNT_MODE = "miscArticleVisitCountMode";
 

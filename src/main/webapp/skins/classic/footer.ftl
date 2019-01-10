@@ -2,7 +2,7 @@
     <div class="wrapper">
         <div class="slogan">
         ${indexIntroLabel} &nbsp; &nbsp;
-            <a href="https://github.com/b3log/symphony" target="_blank" class="tooltipped tooltipped-n"
+            <a href="https://github.com/YunWisdomZhao/BBS" target="_blank" class="tooltipped tooltipped-n"
                aria-label="${siteCodeLabel}">
                 <svg class="icon-github">
                     <use xlink:href="#github"></use>

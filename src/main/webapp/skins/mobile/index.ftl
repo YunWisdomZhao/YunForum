@@ -107,7 +107,7 @@
 
     <div class="slogan">
         ${indexIntroLabel}&nbsp;
-        <a href="https://github.com/b3log/symphony" target="_blank">
+        <a href="https://github.com/YunWisdomZhao/BBS" target="_blank">
             <svg><use xlink:href="#github"></use></svg></a>
         <a href="http://weibo.com/u/2778228501" target="_blank">
             <svg><use xlink:href="#weibo"></use></svg></a>

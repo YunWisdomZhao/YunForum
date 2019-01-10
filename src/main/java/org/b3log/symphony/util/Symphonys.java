@@ -70,7 +70,7 @@ public final class Symphonys {
     /**
      * User-Agent.
      */
-    public static final String USER_AGENT_BOT = "Sym/" + SymphonyServletListener.VERSION + "; +https://github.com/b3log/symphony";
+    public static final String USER_AGENT_BOT = "Sym/" + SymphonyServletListener.VERSION + "; +https://github.com/YunWisdomZhao/BBS";
 
     /**
      * Reserved tags.

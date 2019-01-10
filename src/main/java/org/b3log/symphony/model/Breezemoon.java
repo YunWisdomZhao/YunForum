@@ -18,7 +18,7 @@
 package org.b3log.symphony.model;
 
 /**
- * This class defines all breezemoon model relevant keys. https://github.com/b3log/symphony/issues/507
+ * This class defines all breezemoon model relevant keys. https://github.com/YunWisdomZhao/BBS/issues/507
  *
  * @author <a href="http://88250.b3log.org">Liang Ding</a>
  * @version 1.2.0.0, Jul 20, 2018

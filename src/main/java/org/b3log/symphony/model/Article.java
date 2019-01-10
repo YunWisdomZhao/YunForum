@@ -207,17 +207,17 @@ public final class Article {
     public static final String ARTICLE_AUDIO_URL = "articleAudioURL";
 
     /**
-     * Key of article qna offer point. https://github.com/b3log/symphony/issues/486
+     * Key of article qna offer point. https://github.com/YunWisdomZhao/BBS/issues/486
      */
     public static final String ARTICLE_QNA_OFFER_POINT = "articleQnAOfferPoint";
 
     /**
-     * Key of article push order. https://github.com/b3log/symphony/issues/537
+     * Key of article push order. https://github.com/YunWisdomZhao/BBS/issues/537
      */
     public static final String ARTICLE_PUSH_ORDER = "articlePushOrder";
 
     /**
-     * Key of article image1 URL. https://github.com/b3log/symphony/issues/705
+     * Key of article image1 URL. https://github.com/YunWisdomZhao/BBS/issues/705
      */
     public static final String ARTICLE_IMG1_URL = "articleImg1URL";
 
@@ -448,7 +448,7 @@ public final class Article {
     public static final int ARTICLE_TYPE_C_THOUGHT = 3;
 
     /**
-     * Article type - <a href="https://github.com/b3log/symphony/issues/486">QnA</a>.
+     * Article type - <a href="https://github.com/YunWisdomZhao/BBS/issues/486">QnA</a>.
      */
     public static final int ARTICLE_TYPE_C_QNA = 5;
 

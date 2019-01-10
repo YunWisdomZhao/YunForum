@@ -56,7 +56,7 @@
     },
     {
       "name": "visit",
-      "description": "浏览表 https://github.com/b3log/symphony/issues/687",
+      "description": "浏览表 https://github.com/YunWisdomZhao/BBS/issues/687",
       "keys": [
         {
           "name": "oId",
@@ -299,7 +299,7 @@
           "name": "linkAddrHash",
           "type": "String",
           "length": 64,
-          "description": "链接地址 Hash https://github.com/b3log/symphony/issues/773"
+          "description": "链接地址 Hash https://github.com/YunWisdomZhao/BBS/issues/773"
         },
         {
           "name": "linkAddr",
@@ -1635,7 +1635,7 @@
           "name": "userIndexRedirectURL",
           "type": "String",
           "length": 255,
-          "description": "自定义首页跳转 https://github.com/b3log/symphony/issues/774"
+          "description": "自定义首页跳转 https://github.com/YunWisdomZhao/BBS/issues/774"
         }
       ]
     },

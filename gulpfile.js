@@ -73,7 +73,7 @@ function minCodemirrorJS () {
     './src/main/webapp/js/lib/editor/editor.js',
     './src/main/webapp/js/lib/to-markdown.js']
   return gulp.src(jsCodemirror).
-    pipe(uglify({output: {ascii_only: true}})) // https://github.com/b3log/symphony/issues/765
+    pipe(uglify({output: {ascii_only: true}})) // https://github.com/YunWisdomZhao/BBS/issues/765
     .pipe(concat('codemirror.min.js')).
     pipe(gulp.dest('./src/main/webapp/js/lib/editor/'))
 }

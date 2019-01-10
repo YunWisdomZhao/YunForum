@@ -137,7 +137,7 @@ public final class Mails {
     private static final Configuration TEMPLATE_CFG = new Configuration(Skins.FREEMARKER_VER);
 
     /**
-     * Domain - Channel mapping. &lt;163.com, aliyun&gt; https://github.com/b3log/symphony/issues/737
+     * Domain - Channel mapping. &lt;163.com, aliyun&gt; https://github.com/YunWisdomZhao/BBS/issues/737
      */
     private static final Map<String, String> DOMAIN_CHANNEL = new HashMap<>();
 

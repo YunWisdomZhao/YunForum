@@ -36,7 +36,7 @@
                                 </li>
                                 <li>
                                     Symphony 是<a href="http://www.iciba.com/symphony">交响乐</a>。
-                                    <a href="https://github.com/b3log/symphony">Symphony</a>
+                                    <a href="https://github.com/YunWisdomZhao/BBS">Symphony</a>
                                     以论坛的方式交互，汇总个人博客，需要很多人协同参与才能奏出美妙的乐章。
                                 </li>
                             </ul>

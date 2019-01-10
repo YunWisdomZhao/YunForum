@@ -239,7 +239,7 @@ public class TagQueryService {
 
         List<JSONObject> subList = tags.subList(start, end);
         if (64 <= tags.size()) {
-            // 标签自动完成进行过滤 https://github.com/b3log/symphony/issues/778
+            // 标签自动完成进行过滤 https://github.com/YunWisdomZhao/BBS/issues/778
             subList = subList.stream().filter(tag -> tag.optInt(Tag.TAG_REFERENCE_CNT) > 3).collect(Collectors.toList());
         }
         Collections.sort(subList, (t1, t2) -> t2.optInt(Tag.TAG_REFERENCE_CNT) - t1.optInt(Tag.TAG_REFERENCE_CNT));

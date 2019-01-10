@@ -60,8 +60,8 @@
                                     <a class="title" target="_blank" rel="noopener" href="https://github.com/b3log/solo">GitHub 上 Star 数最多的 Java 博客</a>
                                 </li>
                                 <li class="last">
-                                    <a target="_blank" rel="noopener" href="https://github.com/b3log/symphony"> <b class="ft-green slogan">【Sym】</b></a>
-                                    <a class="title" target="_blank" rel="noopener" href="https://github.com/b3log/symphony">现代化的社区论坛系统</a>
+                                    <a target="_blank" rel="noopener" href="https://github.com/YunWisdomZhao/BBS"> <b class="ft-green slogan">【Sym】</b></a>
+                                    <a class="title" target="_blank" rel="noopener" href="https://github.com/YunWisdomZhao/BBS">现代化的社区论坛系统</a>
                                 </li>
                                 <li class="last">
                                     <a target="_blank" rel="noopener" href="https://github.com/b3log/pipe"> <b class="ft-gray slogan">【Pipe】</b></a>

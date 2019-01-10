@@ -4,7 +4,7 @@
 
 ### 关于提问
 
-在你咨询问题前请先到[黑客派](https://hacpai.com)以及 [issues](https://github.com/b3log/symphony/issues)  列表中进行搜索，这多半能够解决你的疑问。
+在你咨询问题前请先到[黑客派](https://hacpai.com)以及 [issues](https://github.com/YunWisdomZhao/BBS/issues)  列表中进行搜索，这多半能够解决你的疑问。
 
 提问相关具体细节请参考[《提问的智慧》精读注解版](https://hacpai.com/article/1536377163156)来进行操作。
 

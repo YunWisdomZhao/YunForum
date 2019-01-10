@@ -117,7 +117,7 @@ public final class Comment {
     public static final String COMMENT_AUDIO_URL = "commentAudioURL";
 
     /**
-     * Key of comment offered. https://github.com/b3log/symphony/issues/486
+     * Key of comment offered. https://github.com/YunWisdomZhao/BBS/issues/486
      */
     public static final String COMMENT_QNA_OFFERED = "commentQnAOffered";
 
