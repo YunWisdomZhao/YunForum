@@ -46,3 +46,10 @@
 ![8eea4558adb54e508a886c10cc53ccaa-ScreenShot20190110at10.07.01.png](http://pkup7xs78.bkt.clouddn.com/file/2019/1/8eea4558adb54e508a886c10cc53ccaa-ScreenShot20190110at10.07.01.png)
 ![a1b1b1f96e4c4215a0f8825c9d5bdfe1-ScreenShot20190110at10.07.12.png](http://pkup7xs78.bkt.clouddn.com/file/2019/1/a1b1b1f96e4c4215a0f8825c9d5bdfe1-ScreenShot20190110at10.07.12.png)
 ![c1705ea5a9b74c8cbfccc4ef51817d2e-ScreenShot20190110at10.07.39.png](http://pkup7xs78.bkt.clouddn.com/file/2019/1/c1705ea5a9b74c8cbfccc4ef51817d2e-ScreenShot20190110at10.07.39.png)
+
+
+## 初始化SQL脚本
+```sql
+
+
+```
