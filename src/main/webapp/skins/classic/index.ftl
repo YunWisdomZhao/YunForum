@@ -12,15 +12,15 @@
 <link rel="canonical" href="${servePath}">
 </head>
 
-<body class="index"> ${HeaderBannerLabel}
+<body class="index">${HeaderBannerLabel}
 <#include "header.ftl">
 <div class="main">
 
     <!--音乐-->
     <audio id="audios" controls="controls" volume="0.1" autoplay="autoplay" style="position: fixed;z-index: 999;animation: an 0.5s;bottom: 8px;right: 10px;border: aqua;">
-        <source src="https://api.uomg.com/api/rand.music?sort=新歌榜&format=mp3" type="audio/mpeg" />
-        <source src="https://api.uomg.com/api/rand.music?sort=热歌榜&format=mp3" type="audio/mpeg" />
-        <source src="https://api.uomg.com/api/rand.music?sort=电音榜&format=mp3" type="audio/mpeg" />
+        <source src="${randomMusicApi}?sort=新歌榜&format=mp3" type="audio/mpeg" />
+        <source src="${randomMusicApi}?sort=热歌榜&format=mp3" type="audio/mpeg" />
+        <source src="${randomMusicApi}?sort=电音榜&format=mp3" type="audio/mpeg" />
     </audio>
 
     <!--论坛Hot区-->
@@ -32,7 +32,7 @@
                 <#list sideHotArticles as article>
                 <#if article_index gt 6 && article_index lt 12>
                 <div class="fn__flex">
-                    <a href="${servePath}${article.articlePermalink}" class="preview" style="background-image: url('http://acg.xydwz.cn/gqapi/gqapi.php?index=${article_index}');"></a>
+                    <a href="${servePath}${article.articlePermalink}" class="preview" style="background-image: url('${randomLandscapeApi}?index=${article_index}');"></a>
                     <div class="fn__flex-1">
                         <h2 class="article-list__title article-list__title--view fn__ellipsis">
                             <a href="${servePath}${article.articlePermalink}">${article.articleTitleEmoj}</a>
@@ -53,7 +53,7 @@
                 <#if article_index < 7 >
                 <div class="fn__flex">
                     <a href="${servePath}/member/${article.articleAuthorName}">
-                        <div class="avatar tooltipped__user" aria-name="${article.articleAuthorName}" style="background-image: url('https://api.uomg.com/api/rand.avatar?index=${article_index}');"></div>
+                        <div class="avatar tooltipped__user" aria-name="${article.articleAuthorName}" style="background-image: url('${randomAvatarApi}?index=${article_index+1000}');"></div>
                     </a>
                     <a href="${servePath}${article.articlePermalink}" class="fn__flex-1 ft-gray">
                         <div class="fn__two-line">
@@ -74,11 +74,14 @@
                 <#if article_index gt 12 >
                 <li>
                     <a href="${servePath}/member/${article.articleAuthorName}">
-                        <span class="avatar-small slogan tooltipped__user" aria-name="${article.articleAuthorName}" aria-label="${article.articleAuthorName}"  style="background-image:url('https://api.uomg.com/api/rand.avatar?index=${article_index}')"></span>
+                        <span class="avatar-small slogan tooltipped__user" aria-name="${article.articleAuthorName}" aria-label="${article.articleAuthorName}"  style="background-image:url('${randomAvatarApi}?index=${article_index}')"></span>
                     </a>
                     <a class="title fn-ellipsis" href="${servePath}${article.articlePermalink}">${article.articleTitleEmoj}</a>
-                    <a class="fn-right count ft-gray ft-smaller" href="${servePath}${article.articlePermalink}"><#if article.articleViewCount < 1000>
-                        ${article.articleViewCount}<#else>${article.articleViewCntDisplayFormat}</#if></a>
+                    <a class="fn-right count ft-gray ft-smaller" href="${servePath}${article.articlePermalink}">
+                        <#if article.articleViewCount < 1000>
+                        ${article.articleViewCount}<#else>${article.articleViewCntDisplayFormat}
+                        </#if>
+                    </a>
                 </li>
                 </#if>
                 </#list>
@@ -126,7 +129,7 @@
                                 <#if article_index < 13 >
                                 <li>
                                     <a href="${servePath}/member/${article.articleAuthorName}">
-                                        <span class="avatar-small slogan tooltipped__user" aria-name="${article.articleAuthorName}" aria-label="${article.articleAuthorName}"  style="background-image:url('https://api.uomg.com/api/rand.avatar?index=${article_index+100}')"></span>
+                                        <span class="avatar-small slogan tooltipped__user" aria-name="${article.articleAuthorName}" aria-label="${article.articleAuthorName}"  style="background-image:url('${randomAvatarApi}?index=${article_index+100}')"></span>
                                     </a>
                                     <a class="title fn-ellipsis" href="${servePath}${article.articlePermalink}">${article.articleTitleEmoj}</a>
                                     <a class="fn-right count ft-gray ft-smaller" href="${servePath}${article.articlePermalink}"><#if article.articleViewCount < 1000>
@@ -149,7 +152,7 @@
                                 <#list perfectArticles as article>
                                 <li>
                                     <a href="${servePath}/member/${article.articleAuthorName}">
-                                        <span class="avatar-small slogan tooltipped__user" aria-name="ronger" aria-label="${article.articleAuthorName}"  style="background-image:url('https://api.uomg.com/api/rand.avatar?index=${article_index+200}')"></span>
+                                        <span class="avatar-small slogan tooltipped__user" aria-name="ronger" aria-label="${article.articleAuthorName}"  style="background-image:url('${randomAvatarApi}?index=${article_index+200}')"></span>
                                     </a>
                                     <a class="title fn-ellipsis" href="${servePath}${article.articlePermalink}">${article.articleTitleEmoj}</a>
                                     <a class="fn-right count ft-gray ft-smaller" href="${servePath}${article.articlePermalink}"><#if article.articleViewCount < 1000>
@@ -199,7 +202,7 @@
                             <#if article_index < 13 >
                                 <li>
                                     <a href="${servePath}/member/${article.articleAuthorName}">
-                                        <span class="avatar-small slogan tooltipped__user" aria-name="ronger" aria-label="${article.articleAuthorName}"  style="background-image:url('https://api.uomg.com/api/rand.avatar?index=${article_index+300}')"></span>
+                                        <span class="avatar-small slogan tooltipped__user" aria-name="ronger" aria-label="${article.articleAuthorName}"  style="background-image:url('${randomAvatarApi}?index=${article_index+300}')"></span>
                                     </a>
                                     <a class="title fn-ellipsis" href="${servePath}${article.articlePermalink}">${article.articleTitleEmoj}</a>
                                 </li>
@@ -223,7 +226,7 @@
                             <#if article_index < 7 >
                             <li>
                                 <a href="${servePath}/member/${article.articleAuthorName}">
-                                    <span class="avatar-small slogan tooltipped__user" aria-name="ronger" aria-label="${article.articleAuthorName}"  style="background-image:url('https://api.uomg.com/api/rand.avatar?index=${article_index+400}')"></span>
+                                    <span class="avatar-small slogan tooltipped__user" aria-name="ronger" aria-label="${article.articleAuthorName}"  style="background-image:url('${randomAvatarApi}?index=${article_index+400}')"></span>
                                 </a>
                                 <a class="title fn-ellipsis" href="${servePath}${article.articlePermalink}">${article.articleTitleEmoj}</a>
                             </li>
@@ -257,13 +260,7 @@
                     <li class="article-list__item">
                         <div class="fn__flex article-list__panel">
                             <a href="${servePath}/member/${article.articleAuthorName}">
-                                <#if article_index % 3  == 0 >
-                                <div class="avatar tooltipped__user" aria-name="${article.articleAuthorName}" style="background-image: url('http://api.btstu.cn/sjbz/?lx=suiji&index=${article_index+500}');"></div>
-                                <#elseif article_index % 3 == 1 >
-                                <div class="avatar tooltipped__user" aria-name="${article.articleAuthorName}" style="background-image: url('https://api.uomg.com/api/rand.avatar&index=${article_index+600}');"></div>
-                                <#elseif article_index % 3 == 2 >
-                                <div class="avatar tooltipped__user" aria-name="${article.articleAuthorName}" style="background-image: url('https://api.uomg.com/api/rand.avatar&index=${article_index+700}');"></div>
-                                </#if>
+                                <div class="avatar tooltipped__user" aria-name="${article.articleAuthorName}" style="background-image: url('<#if article_index % 3  == 0 >${randomAvatarApi}?index=${article_index+500}<#elseif article_index % 3 == 1 >${randomAvatarApi}?index=${article_index+600}<#elseif article_index % 3 == 2 >${randomAvatarApi}?index=${article_index+700}</#if>');"></div>
                             </a>
                             <div class="fn__flex-1">
                                 <h2 class="article-list__title article-list__title--view fn__ellipsis">
@@ -286,7 +283,7 @@
                     <#if article_index gt 9 >
                     <li>
                         <a href="${servePath}/member/${article.articleAuthorName}">
-                            <span class="avatar-small slogan tooltipped__user" aria-name="${article.articleAuthorName}" style="background-image: url('https://api.uomg.com/api/rand.avatar?index=${article_index+800}');"></span>
+                            <span class="avatar-small slogan tooltipped__user" aria-name="${article.articleAuthorName}" style="background-image: url('${randomAvatarApi}?index=${article_index+800}');"></span>
                         </a>
                         <a href="${servePath}/${article.articlePermalink}" class="title fn__ellipsis">${article.articleTitle}</a>
                     </li>
@@ -312,7 +309,7 @@
                     <#if article_index lt 12 >
                     <li>
                         <a href="${servePath}/member/${article.articleAuthorName}">
-                            <span class="avatar-small slogan tooltipped__user" aria-name="${article.articleAuthorName}" style="background-image: url('https://api.uomg.com/api/rand.avatar?index=${article_index+900}');"></span>
+                            <span class="avatar-small slogan tooltipped__user" aria-name="${article.articleAuthorName}" style="background-image: url('${randomAvatarApi}?index=${article_index+900}');"></span>
                         </a>
                         <a href="${servePath}/${article.articlePermalink}" class="title fn__ellipsis">${article.articleTitle}</a>
                     </li>

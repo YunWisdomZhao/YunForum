@@ -296,9 +296,11 @@ public class IndexProcessor {
     @Before({StopwatchStartAdvice.class})
     @After({PermissionGrant.class, StopwatchEndAdvice.class})
     public void showIndex(final RequestContext context) {
+
         final HttpServletRequest request = context.getRequest();
         final HttpServletResponse response = context.getResponse();
         final JSONObject currentUser = (JSONObject) request.getAttribute(Common.CURRENT_USER);
+
         if (null != currentUser) {
             // 自定义首页跳转 https://github.com/YunWisdomZhao/BBS/issues/774
             final String indexRedirectURL = currentUser.optString(UserExt.USER_INDEX_REDIRECT_URL);
@@ -336,6 +338,13 @@ public class IndexProcessor {
 
         final List<JSONObject> recruitRandomArticles = articleQueryService.getRecruitRandomArticles();
         dataModel.put(Common.RECRUIT_RANDOM_ARTICLES, recruitRandomArticles);
+
+        // 设置随机头像地址
+        dataModel.put(Common.RANDOM_AVATAR_IMAGE,Symphonys.get(Common.RANDOM_AVATAR));
+        // 设置随机音乐地址
+        dataModel.put(Common.RANDOM_MUSIC_API,Symphonys.get(Common.RANDOM_MUSIC));
+        // 设置随机风景地址
+        dataModel.put(Common.RANDOM_LANDSCAPE_API,Symphonys.get(Common.RANDOM_LANDSCAPE));
 
         dataModelService.fillHeaderAndFooter(request, response, dataModel);
         dataModelService.fillIndexTags(dataModel);

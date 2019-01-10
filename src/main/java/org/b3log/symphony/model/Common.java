@@ -842,6 +842,35 @@ public final class Common {
     public static final String REFERRAL = "referral";
 
     /**
+     * Key of referral.
+     */
+    public static final String RANDOM_AVATAR = "random.avatar.api";
+
+    /**
+     * Key of referral.
+     */
+    public static final String RANDOM_AVATAR_IMAGE = "randomAvatarApi";
+
+    /**
+     * Key of referral.
+     */
+    public static final String RANDOM_MUSIC = "random.music.api";
+
+    /**
+     * Key of referral.
+     */
+    public static final String RANDOM_MUSIC_API = "randomMusicApi";
+    /**
+     * Key of referral.
+     */
+    public static final String RANDOM_LANDSCAPE = "random.landscape.url";
+
+    /**
+     * Key of referral.
+     */
+    public static final String RANDOM_LANDSCAPE_API = "randomLandscapeApi";
+
+    /**
      * Key of top balance users.
      */
     public static final String TOP_BALANCE_USERS = "topBalanceUsers";
