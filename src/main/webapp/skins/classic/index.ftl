@@ -266,11 +266,16 @@
                                 <h2 class="article-list__title article-list__title--view fn__ellipsis">
                                     <a rel="bookmark" href="${servePath}${article.articlePermalink}" target="_self">${article.articleTitle}</a>
                                 </h2>
-                                <a rel="tag" class="tag" href="${servePath}/tag/qna">Q&amp;A</a>
+                                <#if article.articleTags?? >
+                                <#list article.articleTags?split(",") as articleTag>
+                                <#if articleTag_index lt 3>
+                                <a rel="tag" class="tag" href="${servePath}/tag/${articleTag}" style="font-size:10px;">${articleTag}</a>&nbsp;
+                                </#if>
+                                </#list>
+                                </#if>
                             </div>
-
                             <a class="qna__item ft__center" href="${servePath}${article.articlePermalink}" target="_self">
-                                <div class="article-level0">${article.articleQnAOfferPoint}</div>
+                                <div class="article-level0 <#if article.articleQnAOfferPoint gt 100>red</#if>">${article.articleQnAOfferPoint}</div>
                                 <div class="ft__smaller ft__fade">悬赏积分</div>
                             </a>
                         </div>
@@ -280,7 +285,7 @@
                 </ul>
                 <ul class="module-list fn__flex-1">
                     <#list questionArticles as article>
-                    <#if article_index gt 9 >
+                    <#if article_index gt 9 && article_index lt 25>
                     <li>
                         <a href="${servePath}/member/${article.articleAuthorName}">
                             <span class="avatar-small slogan tooltipped__user" aria-name="${article.articleAuthorName}" style="background-image: url('${randomAvatarApi}?index=${article_index+800}');"></span>

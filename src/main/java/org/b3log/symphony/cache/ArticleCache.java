@@ -228,6 +228,7 @@ public class ArticleCache {
         if (Latkes.RuntimeMode.PRODUCTION != Latkes.getRuntimeMode()) {
             loadQuestionArticles();
         }
+        loadQuestionArticles();
 
         int size = Symphonys.getInt("questionArticlesCnt");
         if (1 > size) {
@@ -256,7 +257,7 @@ public class ArticleCache {
         try {
             final String id = String.valueOf(DateUtils.addDays(new Date(), -7).getTime());
             final Query query = new Query().addSort(Article.ARTICLE_COMMENT_CNT, SortDirection.DESCENDING).
-                    addSort(Keys.OBJECT_ID, SortDirection.ASCENDING).setCurrentPageNum(1).setPageSize(Symphonys.getInt("questionArticlesCnt"));
+                    addSort(Keys.OBJECT_ID, SortDirection.DESCENDING).setCurrentPageNum(1).setPageSize(Symphonys.getInt("questionArticlesCnt"));
 
             final List<Filter> filters = new ArrayList<>();
             filters.add(new PropertyFilter(Keys.OBJECT_ID, FilterOperator.GREATER_THAN_OR_EQUAL, id));
@@ -266,6 +267,7 @@ public class ArticleCache {
                     addProjection(Article.ARTICLE_TITLE, String.class).
                     addProjection(Article.ARTICLE_PERMALINK, String.class).
                     addProjection(Article.ARTICLE_AUTHOR_ID, String.class).
+                    addProjection(Article.ARTICLE_TAGS, String.class).
                     addProjection(Article.ARTICLE_QNA_OFFER_POINT, String.class);
 
             final JSONObject result = articleRepository.get(query);
