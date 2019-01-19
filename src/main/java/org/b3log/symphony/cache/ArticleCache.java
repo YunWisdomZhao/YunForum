@@ -18,8 +18,8 @@
 package org.b3log.symphony.cache;
 
 import org.apache.commons.lang.time.DateUtils;
-import org.b3log.latke.Latkes;
 import org.b3log.latke.Keys;
+import org.b3log.latke.Latkes;
 import org.b3log.latke.cache.Cache;
 import org.b3log.latke.cache.CacheFactory;
 import org.b3log.latke.ioc.BeanManager;
@@ -31,7 +31,6 @@ import org.b3log.latke.util.CollectionUtils;
 import org.b3log.latke.util.Stopwatchs;
 import org.b3log.symphony.model.Article;
 import org.b3log.symphony.model.Common;
-import org.b3log.symphony.model.Tag;
 import org.b3log.symphony.model.UserExt;
 import org.b3log.symphony.repository.ArticleRepository;
 import org.b3log.symphony.service.ArticleQueryService;
@@ -228,7 +227,6 @@ public class ArticleCache {
         if (Latkes.RuntimeMode.PRODUCTION != Latkes.getRuntimeMode()) {
             loadQuestionArticles();
         }
-        loadQuestionArticles();
 
         int size = Symphonys.getInt("questionArticlesCnt");
         if (1 > size) {

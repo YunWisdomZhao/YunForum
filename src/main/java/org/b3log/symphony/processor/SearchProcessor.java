@@ -118,7 +118,6 @@ public class SearchProcessor {
 
         if (!Symphonys.getBoolean("es.enabled") && !Symphonys.getBoolean("algolia.enabled")) {
             context.sendError(HttpServletResponse.SC_NOT_FOUND);
-
             return;
         }
 
@@ -141,40 +140,31 @@ public class SearchProcessor {
         if (Symphonys.getBoolean("es.enabled")) {
             final JSONObject result = searchQueryService.searchElasticsearch(Article.ARTICLE, keyword, pageNum, pageSize);
             if (null == result || 0 != result.optInt("status")) {
-                context.sendError(HttpServletResponse.SC_NOT_FOUND);
-
-                return;
+                //context.sendError(HttpServletResponse.SC_NOT_FOUND);
+            } else {
+                final JSONObject hitsResult = result.optJSONObject("hits");
+                final JSONArray hits = hitsResult.optJSONArray("hits");
+                for (int i = 0; i < hits.length(); i++) {
+                    final JSONObject article = hits.optJSONObject(i).optJSONObject("_source");
+                    articles.add(article);
+                }
+                total = result.optInt("total");
             }
-
-            final JSONObject hitsResult = result.optJSONObject("hits");
-            final JSONArray hits = hitsResult.optJSONArray("hits");
-
-            for (int i = 0; i < hits.length(); i++) {
-                final JSONObject article = hits.optJSONObject(i).optJSONObject("_source");
-                articles.add(article);
-            }
-
-            total = result.optInt("total");
         }
-
         if (Symphonys.getBoolean("algolia.enabled")) {
             final JSONObject result = searchQueryService.searchAlgolia(keyword, pageNum, pageSize);
             if (null == result) {
-                context.sendError(HttpServletResponse.SC_NOT_FOUND);
-
-                return;
-            }
-
-            final JSONArray hits = result.optJSONArray("hits");
-
-            for (int i = 0; i < hits.length(); i++) {
-                final JSONObject article = hits.optJSONObject(i);
-                articles.add(article);
-            }
-
-            total = result.optInt("nbHits");
-            if (total > 1000) {
-                total = 1000; // Algolia limits the maximum number of search results to 1000
+                //context.sendError(HttpServletResponse.SC_NOT_FOUND);
+            } else {
+                final JSONArray hits = result.optJSONArray("hits");
+                for (int i = 0; i < hits.length(); i++) {
+                    final JSONObject article = hits.optJSONObject(i);
+                    articles.add(article);
+                }
+                total = result.optInt("nbHits");
+                if (total > 1000) {
+                    total = 1000; // Algolia limits the maximum number of search results to 1000
+                }
             }
         }
 

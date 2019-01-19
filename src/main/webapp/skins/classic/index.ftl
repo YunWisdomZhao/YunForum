@@ -10,6 +10,11 @@
 <link rel="stylesheet" href="${staticServePath}/css/index-login.css?${staticResourceVersion}" />
 <link rel="stylesheet" href="${staticServePath}/css/index-style.css?${staticResourceVersion}" />
 <link rel="canonical" href="${servePath}">
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script src="${staticServePath}/js/lib/algolia/algolia.min.js?v2.0.0"></script>
+<script src="${staticServePath}/js/style.common.js"></script>
+<script src="${staticServePath}/js/style.index.js"></script>
+<script src="${staticServePath}/js/vendors.symbol.js"></script>
 </head>
 
 <body class="index">${HeaderBannerLabel}
@@ -290,7 +295,7 @@
                         <a href="${servePath}/member/${article.articleAuthorName}">
                             <span class="avatar-small slogan tooltipped__user" aria-name="${article.articleAuthorName}" style="background-image: url('${randomAvatarApi}?index=${article_index+800}');"></span>
                         </a>
-                        <a href="${servePath}/${article.articlePermalink}" class="title fn__ellipsis">${article.articleTitle}</a>
+                        <a href="${servePath}${article.articlePermalink}" class="title fn__ellipsis">${article.articleTitle}</a>
                     </li>
                     </#if>
                     </#list>
@@ -316,7 +321,7 @@
                         <a href="${servePath}/member/${article.articleAuthorName}">
                             <span class="avatar-small slogan tooltipped__user" aria-name="${article.articleAuthorName}" style="background-image: url('${randomAvatarApi}?index=${article_index+900}');"></span>
                         </a>
-                        <a href="${servePath}/${article.articlePermalink}" class="title fn__ellipsis">${article.articleTitle}</a>
+                        <a href="${servePath}${article.articlePermalink}" class="title fn__ellipsis">${article.articleTitle}</a>
                     </li>
                     </#if>
                     </#list>
@@ -384,6 +389,8 @@
 </div>
 <#include "footer.ftl">
 <script src="${staticServePath}/js/channel${miniPostfix}.js?${staticResourceVersion}"></script>
+<script src="${staticServePath}/js/index.js"></script>
+<script src="${staticServePath}/js/vendors.js"></script>
 <script type="text/javascript">
 
 $("#audios")[0].volume = 0.1;
@@ -401,11 +408,161 @@ $('.preview, .index-tabs > span').click(function (event) {
     }, 800);
 });
 
-// 延时播放
-setTimeout(function(){
-    $("#audios")[0].volume = 0.1;
-    $("#audios")[0].play();
-},3000);
+var Label = {
+    confirmLogoutLabel: '确定需要登出黑客派？',
+    version: '3.4.6',
+    moreLabel: '更多',
+    hideLabel: '隐藏',
+    chatLabel: '聊天',
+    openOrgImgLabel: '查看原图',
+    downloadLabel: '下载',
+    revolveLabel: '旋转',
+    nextPageLabel: '下一页',
+    YCYLabel: '异次元空间',
+    markedAvailable: true,
+    searchTimeTipLabel: '⚡️ 已找到 <strong>{count}</strong> 个相关结果（用时 <strong>{time}ms</strong>）',
+    searchEmptyLabel: '暂时没有搜索到相关的数据 :(',
+    statUserLabel: '用户',
+    tagLabel: '标签',
+    articleLabel: '帖子',
+    updateNameTipLabel: '（修改用户名需消耗 {point} 积分）',
+    certainLabel: '确定',
+    deactivateAccountLabel: '永久停用账号',
+    tipLabel: '提示',
+    reportContentLabel: '请说明举报理由',
+    miscLabel: '其他',
+    reportSuccLabel: '举报成功',
+    spamADLabel: '垃圾广告',
+    pornographicLabel: '低俗色情',
+    violationOfRegulationsLabel: '违法违规',
+    allegedlyInfringingLabel: '涉嫌侵权',
+    personalAttacksLabel: '人身攻击',
+    posingAccountLabel: '冒充账号',
+    spamADAccountLabel: '垃圾广告账号',
+    personalInfoViolationLabel: '个人信息违规',
+    reportLabel: '举报',
+    noMessageLabel: '无消息',
+    invalidQnAOfferPointLabel: '悬赏积分必须大于等于 20',
+    submitLabel: '提交',
+    nextStepLabel: '下一步',
+    breezemoonLabel: '清风明月',
+    breezemoonDescriptionLabel: '只与清风、明月为伴。',
+    invalidUserNameLabel: '用户名仅允许使用数字或字母，最大长度 20',
+    finshLabel: '完成',
+    invalidEmailLabel: '邮箱地址格式有误',
+    confirmPwdErrorLabel: '密码输入不一致',
+    captchaErrorLabel: '验证码错误',
+    imgMaxSize: 10485760,
+    fileMaxSize: 20971520,
+    miniPostfix: '.min',
+    messageLabel: '消息',
+    desktopNotificationTemplateLabel: '你有一些未读消息',
+    invalidPasswordLabel: '密码格式有误（数字及字母组合，长度 6-16）',
+    loginNameErrorLabel: '登录名称长度 1-256',
+    followLabel: '关注',
+    unfollowLabel: '取消关注',
+    symphonyLabel: '黑客派',
+    cmtLabel: '回帖',
+    collectLabel: '收藏',
+    uncollectLabel: '取消收藏',
+    copyLabel: '复制',
+    copiedLabel: '已复制',
+    servePath: 'http://127.0.0.1:8080',
+    staticServePath: 'https://static.hacpai.com',
+    isLoggedIn: true,
+    funNeedLoginLabel: '登录后才能使用该功能',
+    notificationCommentedLabel: '收到的回帖',
+    notificationReplyLabel: '收到的回复',
+    notificationAtLabel: '提及我的',
+    notificationFollowingLabel: '我关注的',
+    pointLabel: '积分',
+    sameCityLabel: '同城',
+    systemLabel: '系统',
+    walletLabel: '钱包',
+    newFollowerLabel: '新关注者',
+    makeAsReadLabel: '标记为已读',
+    commaLabel: '，',
+    canDragLabel: '可拖拽',
+    setEmotionLabel: '设置常用表情',
+    year: '2019',
+    mouseEffects: true,
+    killBrowserLabel: '<div class="fn__clear content-reset">为了让浏览器更好的发展，人类更加的进步，拥有更好的体验，让我们放弃使用那些过时、不安全的浏览器。<p>你可以下载：</p><ul class="fn__left"><li><a href="http://www.google.com/chrome" target="_blank" rel="noopener">谷歌浏览器</a></li><li><a href="http://www.mozilla.com/" target="_blank" rel="noopener">火狐</a></li><li><a href="http://se.360.cn/" target="_blank" rel="noopener">360</a> 或者 <a href="https://www.baidu.com/s?wd=%E6%B5%8F%E8%A7%88%E5%99%A8" target="_blank" rel="noopener">其它浏览器</a></li></ul><img class="fn__right" alt="Kill IE6" title="Kill IE6" src="/images/kill-browser.png"></div>',
+    killBrowserTitleLabel: '让我们放弃使用那些过时、不安全的浏览器吧！',
+    activityStartEatingSnakeTipLabel: '玩一局需要 【{point}】积分，确定开始么？',
+    activityStartGobangTipLabel: '玩一局需要 【{point}】积分，确定开始么？',
+    activityAskForDrawLabel: '对方请求和棋，是否同意？',
+    newVersionAvailableLabel: '新版本可用',
+    colonLabel: '：',
+    upToDateLabel: '已是最新版',
+    amountNotEmpty: '数额不能为空',
+    updateFailLabel: '更新失败',
+    updateSuccLabel: '更新成功',
+    transferSuccLabel: '转账成功',
+    invalidUserURLLabel: '链接需要符合 URL（协议://地址），最大长度 100',
+    tagsErrorLabel: '最多包含 4 个标签，每个标签长度 1-9，请勿包含特殊符号',
+    invalidUserQQLabel: 'QQ 号必须为数字，最大长度 12',
+    invalidUserIntroLabel: '个人简介最大长度 255',
+    invalidUserB3KeyLabel: 'B3 Key 最大长度 20',
+    invalidUserB3ClientURLLabel: 'B3 客户端接口最大长度 150',
+    invalidUserNicknameLabel: '昵称最大长度 20',
+    previewLabel: '预览',
+    unPreviewLabel: '取消预览',
+    invalidPhoneLabel: '手机号有误',
+    uploadLabel: '上传',
+    addBoldLabel: '添加粗体',
+    addItalicLabel: '添加斜体',
+    insertQuoteLabel: '插入引用',
+    addBulletedLabel: '添加无序列表',
+    addNumberedListLabel: '添加有序列表',
+    addLinkLabel: '添加链接',
+    undoLabel: '撤销',
+    redoLabel: '恢复',
+    helpLabel: '帮助',
+    fullscreenLabel: '全屏',
+    uploadFileLabel: '上传文件',
+    insertEmojiLabel: '插入表情',
+    articleTitleErrorLabel: '帖子标题长度 1-255',
+    articleContentErrorLabel: '帖子内容长度 4-{maxArticleContentLength}',
+    recordDeniedLabel: '授权后才可以使用音频',
+    recordDeviceNotFoundLabel: '录音设备加载失败',
+    audioRecordingLabel: '[录音中]',
+    uploadingLabel: '[上传中请稍候]',
+    articleRewardPointErrorLabel: '打赏区积分必须为正整数',
+    discussionLabel: '机要',
+    commonAtUser: 'true',
+    commentErrorLabel: '回帖内容长度 1-2000',
+    thankSentLabel: '谢意已传达~',
+    notAllowCmtLabel: '该帖已关闭回帖',
+    upLabel: '赞同',
+    downLabel: '反对',
+    removedLabel: '相关数据已被删除',
+    stickConfirmLabel: '确定要消费 {point} 积分来置顶该帖子吗？',
+    noRevisionLabel: '权限不足或内容没有发生过改变。',
+    thankedLabel: '已感谢',
+    thankLabel: '感谢',
+    isAdminLoggedIn: false,
+    adminLabel: '管理',
+    thankSelfLabel: '老王，你家的瓜熟了~',
+    replyLabel: '回复',
+    referenceLabel: '引用',
+    goCommentLabel: '跳转到回帖',
+    commonUpdateCommentPermissionLabel: '更新回帖',
+    noPermissionLabel: '你目前是<span class="ft-green">新手</span>，还不能使用该功能 <img align="absmiddle" alt=":flushed:" class="emoji" src="https://static.hacpai.com/emoji/graphics/flushed.png" title=":flushed:"><br><span class="ft-smaller">了解<a href="http://127.0.0.1:8080/article/1482057214675" target="_blank">社区信任体系</a></span>',
+    rewardLabel: '打赏',
+    closeLabel: '关闭',
+    invalidAppRoleLabel: '角色有误',
+    cancelLabel: '取消',
+    userChannelURL: 'wss://hacpai.com:/user-channel?url=' + encodeURIComponent(window.location.href),
+    csrfToken: 'mrrPQ0CalWnJ',
+    confirmRemoveLabel: '确定删除么？',
+    userNotifyStatus: '0',
+    chatRoomChannelURL: 'wss://hacpai.com:/chat-room-channel',
+    currentUserName: 'YunWisdom',
+    currentUserId: '1546933203274',
+    userKeyboardShortcutsStatus: '1',
+    algoliaAppId: 'RORM6JWE5I',
+    algoliaSearchKey: '71dbdd62005849ec443fbb8aa973a131',
+}
 </script>
 </body>
 </html>

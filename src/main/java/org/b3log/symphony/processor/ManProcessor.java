@@ -74,7 +74,7 @@ public class ManProcessor {
         final HttpServletRequest request = context.getRequest();
         final HttpServletResponse response = context.getResponse();
         if (!ManQueryService.TLDR_ENABLED) {
-            context.sendRedirect("https://hacpai.com/man");
+            context.sendRedirect("http://127.0.0.1:8080/man");
 
             return;
         }

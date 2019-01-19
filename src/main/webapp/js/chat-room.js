@@ -42,7 +42,7 @@ var ChatRoom = {
                     {name: 'ordered-list'},
                     {name: 'view'},
                     {name: 'fullscreen'},
-                    {name: 'question', action: 'https://hacpai.com/guide/markdown'}
+                    {name: 'question', action: 'http://127.0.0.1:8080/guide/markdown'}
                 ],
                 extraKeys: {
                     "Alt-/": "autocompleteUserName",

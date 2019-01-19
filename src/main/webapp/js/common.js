@@ -294,7 +294,7 @@ var Util = {
       return false;
     }).bind('keyup', 'Shift+/', function (event) {
       // shift/⇧ ? 新窗口打开键盘快捷键说明文档
-      window.open('https://hacpai.com/article/1474030007391');
+      window.open('http://127.0.0.1:8080/article/1474030007391');
       return false;
     }).bind('keyup', 'j', function (event) {
       // j 移动到下一项

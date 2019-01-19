@@ -712,6 +712,11 @@ public final class Common {
     public static final String CREATE_TIME = "createTime";
 
     /**
+     * Key of Create time.
+     */
+    public static final String CARD = "card";
+
+    /**
      * Key of version.
      */
     public static final String VERSION = "version";

@@ -38,7 +38,7 @@
                                                 <a href="${servePath}/activity/yesterday-liveness-reward">${activityYesterdayLivenessRewardLabel}</a>
                                             </h2>
                                             <span class="ft-fade content-reset">
-                                                领取昨日 <a href="https://hacpai.com/article/1458624687933" rel="nofollow" class="ft-gray">活跃度奖励</a> ，目前最高可以获得 <code>${activitYesterdayLivenessRewardMaxPoint?c}</code>
+                                                领取昨日 <a href="http://127.0.0.1:8080/article/1458624687933" rel="nofollow" class="ft-gray">活跃度奖励</a> ，目前最高可以获得 <code>${activitYesterdayLivenessRewardMaxPoint?c}</code>
                                             </span>
                                         </div>
                                     </div>

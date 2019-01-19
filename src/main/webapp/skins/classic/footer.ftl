@@ -24,7 +24,7 @@
         <div class="fn-flex-1">
             <div class="footer-nav fn-clear">
                 <a rel="help" href="${servePath}/article/1546929099122">${aboutLabel}</a>
-                <a href="https://hacpai.com/article/1457158841475">API</a>
+                <a href="http://127.0.0.1:8080/article/1457158841475">API</a>
                 <a href="${servePath}/tag/announcement">${symAnnouncementLabel}</a>
                 <a href="${servePath}/domains">${domainLabel}</a>
                 <a href="${servePath}/tags">${tagLabel}</a>

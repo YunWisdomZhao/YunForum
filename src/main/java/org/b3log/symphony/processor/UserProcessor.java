@@ -62,6 +62,7 @@ import java.util.*;
  * <li>User breezemoons (/member/{userName}/breezemoons), GET</li>
  * <li>Lists usernames (/users/names), GET</li>
  * <li>Lists emotions (/users/emotions), GET</li>
+ * <li>Lists cards (/users/{userName}/card), GET</li>
  * </ul>
  *
  * @author <a href="http://88250.b3log.org">Liang Ding</a>
@@ -1017,6 +1018,30 @@ public class UserProcessor {
         final String emotions = emotionQueryService.getEmojis(userId);
 
         context.renderJSONValue("emotions", emotions);
+    }
+
+    /**
+     * Shows user home breezemoons page.
+     *
+     * @param context the specified context
+     */
+    @RequestProcessing(value = {"/users/{userName}/card"}, method = HttpMethod.GET)
+    public void showCard(final RequestContext context) {
+
+        final HttpServletRequest request = context.getRequest();
+        final HttpServletResponse response = context.getResponse();
+
+        final JSONObject user = (JSONObject) request.getAttribute(User.USER);
+
+        final AbstractFreeMarkerRenderer renderer = new SkinRenderer(request);
+        context.setRenderer(renderer);
+        renderer.setTemplateName("card.ftl");
+
+        final Map<String, Object> dataModel = renderer.getDataModel();
+
+        dataModel.put(Common.CARD,user);
+
+        dataModelService.fillHeaderAndFooter(request, response, dataModel);
     }
 
     /**

@@ -16,7 +16,7 @@
                 <span class="ft-gray">${basicTipLabel}</span>
             </li>
             <li>
-                <a href="https://hacpai.com/article/1474030007391">${hotKeyLabel}</a>
+                <a href="http://127.0.0.1:8080/article/1474030007391">${hotKeyLabel}</a>
                 <span class="ft-gray">${hotKeyTipLabel}</span>
             </li>
             <li>

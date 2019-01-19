@@ -33,7 +33,7 @@
                     </a>
                     <div class="ft-gray">
                         ${addThoughtArticleTipLabel}
-                        <a href="https://hacpai.com/article/1441942422856" target="_blank">(?)</a>
+                        <a href="http://127.0.0.1:8080/article/1441942422856" target="_blank">(?)</a>
                     </div>
                 </div>
                 <div>

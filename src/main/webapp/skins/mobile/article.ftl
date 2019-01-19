@@ -349,7 +349,7 @@
                     <div class="module-header">
                         <h2>
                             ${sponsorLabel} 
-                            <a href="https://hacpai.com/article/1460083956075" class="fn-right ft-13 ft-gray" target="_blank">${wantPutOnLabel}</a>
+                            <a href="http://127.0.0.1:8080/article/1460083956075" class="fn-right ft-13 ft-gray" target="_blank">${wantPutOnLabel}</a>
                         </h2>
                     </div>
                     <div class="module-panel ad fn-clear">

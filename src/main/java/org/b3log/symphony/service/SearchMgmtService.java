@@ -66,8 +66,8 @@ public class SearchMgmtService {
      */
     public void rebuildESIndex() {
         try {
-            HttpRequest.delete(ES_SERVER + "/" + ES_INDEX_NAME).timeout(3000).send();
-            HttpRequest.put(ES_SERVER + "/" + ES_INDEX_NAME).timeout(3000).send();
+            HttpRequest.delete(ES_SERVER + "/" + ES_INDEX_NAME).timeout(30000).send();
+            HttpRequest.put(ES_SERVER + "/" + ES_INDEX_NAME).timeout(30000).send();
 
             final JSONObject mapping = new JSONObject();
             final JSONObject article = new JSONObject();
@@ -85,7 +85,7 @@ public class SearchMgmtService {
             content.put("analyzer", "ik_smart");
             content.put("search_analyzer", "ik_smart");
 
-            HttpRequest.post(ES_SERVER + "/" + ES_INDEX_NAME + "/" + Article.ARTICLE + "/_mapping").bodyText(mapping.toString()).timeout(3000).contentTypeJson();
+            HttpRequest.post(ES_SERVER + "/" + ES_INDEX_NAME + "/" + Article.ARTICLE + "/_mapping").bodyText(mapping.toString()).timeout(30000).contentTypeJson();
         } catch (final Exception e) {
             LOGGER.log(Level.ERROR, "Removes index failed", e);
         }

@@ -139,7 +139,7 @@
                             <#elseif 3 == articleType>
                                 <svg><use xlink:href="#video"></use></svg> ${thoughtLabel}
                             <span class="ft-gray">${addThoughtArticleTipLabel}
-                                <a href="https://hacpai.com/article/1441942422856" target="_blank">(?)</a></span>
+                                <a href="http://127.0.0.1:8080/article/1441942422856" target="_blank">(?)</a></span>
                             <#elseif 5 == articleType>
                             <svg class="post__info">
                                 <use xlink:href="#iconAsk"></use>

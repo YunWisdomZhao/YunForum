@@ -58,7 +58,7 @@ public final class Links {
      * @param url the specified URL
      * @return link like this: <pre>
      * {
-     *     "linkAddr": "https://hacpai.com/article/1440573175609",
+     *     "linkAddr": "http://127.0.0.1:8080/article/1440573175609",
      *     "linkTitle": "黑客派简介",
      *     "linkKeywords": "",
      *     "linkHTML": "page HTML",

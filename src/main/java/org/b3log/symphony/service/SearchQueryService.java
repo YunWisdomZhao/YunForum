@@ -23,9 +23,7 @@ import org.b3log.latke.logging.Level;
 import org.b3log.latke.logging.Logger;
 import org.b3log.latke.service.annotation.Service;
 import org.b3log.latke.util.URLs;
-import org.b3log.symphony.model.Article;
 import org.b3log.symphony.util.Symphonys;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -59,60 +57,60 @@ public class SearchQueryService {
      */
     public JSONObject searchElasticsearch(final String type, final String keyword, final int currentPage, final int pageSize) {
         try {
-            final JSONObject reqData = new JSONObject();
-            final JSONObject q = new JSONObject();
-            final JSONObject and = new JSONObject();
-            q.put("and", and);
-            final JSONArray query = new JSONArray();
-            and.put("query", query);
-            final JSONObject or = new JSONObject();
-            query.put(or);
-            final JSONArray orClause = new JSONArray();
-            or.put("or", orClause);
+//            final JSONObject reqData = new JSONObject();
+//            final JSONObject q = new JSONObject();
+//            final JSONObject and = new JSONObject();
+//            q.put("and", and);
+//            final JSONArray query = new JSONArray();
+//            and.put("query", query);
+//            final JSONObject or = new JSONObject();
+//            query.put(or);
+//            final JSONArray orClause = new JSONArray();
+//            or.put("or", orClause);
+//
+//            final JSONObject content = new JSONObject();
+//            content.put(Article.ARTICLE_CONTENT, keyword);
+//            final JSONObject matchContent = new JSONObject();
+//            matchContent.put("match", content);
+//            orClause.put(matchContent);
+//
+//            final JSONObject title = new JSONObject();
+//            title.put(Article.ARTICLE_TITLE, keyword);
+//            final JSONObject matchTitle = new JSONObject();
+//            matchTitle.put("match", title);
+//            orClause.put(matchTitle);
+//
+//            reqData.put("query", q);
+//            reqData.put("from", currentPage);
+//            reqData.put("size", pageSize);
+//            final JSONArray sort = new JSONArray();
+//            final JSONObject sortField = new JSONObject();
+//            sort.put(sortField);
+//            sortField.put(Article.ARTICLE_CREATE_TIME, "desc");
+//            sort.put("_score");
+//            reqData.put("sort", sort);
+//
+//            final JSONObject highlight = new JSONObject();
+//            reqData.put("highlight", highlight);
+//            highlight.put("number_of_fragments", 3);
+//            highlight.put("fragment_size", 150);
+//            final JSONObject fields = new JSONObject();
+//            highlight.put("fields", fields);
+//            final JSONObject contentField = new JSONObject();
+//            fields.put(Article.ARTICLE_CONTENT, contentField);
+//
+//            final JSONArray filter = new JSONArray();
+//            and.put("filter", filter);
+//            final JSONObject term = new JSONObject();
+//            filter.put(term);
+//            final JSONObject field = new JSONObject();
+//            term.put("term", field);
+//            field.put(Article.ARTICLE_STATUS, Article.ARTICLE_STATUS_C_VALID);
+//
+//            LOGGER.debug(reqData.toString(4));
 
-            final JSONObject content = new JSONObject();
-            content.put(Article.ARTICLE_CONTENT, keyword);
-            final JSONObject matchContent = new JSONObject();
-            matchContent.put("match", content);
-            orClause.put(matchContent);
-
-            final JSONObject title = new JSONObject();
-            title.put(Article.ARTICLE_TITLE, keyword);
-            final JSONObject matchTitle = new JSONObject();
-            matchTitle.put("match", title);
-            orClause.put(matchTitle);
-
-            reqData.put("query", q);
-            reqData.put("from", currentPage);
-            reqData.put("size", pageSize);
-            final JSONArray sort = new JSONArray();
-            final JSONObject sortField = new JSONObject();
-            sort.put(sortField);
-            sortField.put(Article.ARTICLE_CREATE_TIME, "desc");
-            sort.put("_score");
-            reqData.put("sort", sort);
-
-            final JSONObject highlight = new JSONObject();
-            reqData.put("highlight", highlight);
-            highlight.put("number_of_fragments", 3);
-            highlight.put("fragment_size", 150);
-            final JSONObject fields = new JSONObject();
-            highlight.put("fields", fields);
-            final JSONObject contentField = new JSONObject();
-            fields.put(Article.ARTICLE_CONTENT, contentField);
-
-            final JSONArray filter = new JSONArray();
-            and.put("filter", filter);
-            final JSONObject term = new JSONObject();
-            filter.put(term);
-            final JSONObject field = new JSONObject();
-            term.put("term", field);
-            field.put(Article.ARTICLE_STATUS, Article.ARTICLE_STATUS_C_VALID);
-
-            LOGGER.debug(reqData.toString(4));
-
-            final HttpResponse response = HttpRequest.post(SearchMgmtService.ES_SERVER + "/" + SearchMgmtService.ES_INDEX_NAME + "/" + type
-                    + "/_search").bodyText(reqData.toString()).contentTypeJson().timeout(5000).send();
+            final String searchUrl = new StringBuffer(SearchMgmtService.ES_SERVER ).append("/").append(SearchMgmtService.ES_INDEX_NAME).append("/").append(type).append("/_search?q=articleTitle:").append(keyword).append("%20-artcileContent:").append(keyword).toString();
+            final HttpResponse response = HttpRequest.get(searchUrl).contentTypeJson().timeout(30000).send();
             response.charset("UTF-8");
             return new JSONObject(response.bodyText());
         } catch (final Exception e) {

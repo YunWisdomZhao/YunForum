@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.b3log</groupId>
     <artifactId>symphony</artifactId>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <version>3.4.5</version>
     <name>Symphony</name>
     <url>https://sym.b3log.org</url>
@@ -28,6 +28,7 @@
         <user-agent-utils.version>1.21</user-agent-utils.version>
         <commons-codec.version>1.10</commons-codec.version>
         <es.version>2.3.1</es.version>
+        <es.plugin.version>6.4.0</es.plugin.version>
         <owasp.version>1.2.2</owasp.version>
         <snakeyaml.version>1.18</snakeyaml.version>
         <freemarker.version>2.3.28</freemarker.version>
@@ -203,6 +204,12 @@
             <scope>test</scope>
         </dependency>
 
+       <!-- <dependency>
+            <groupId>org.elasticsearch.plugin</groupId>
+            <artifactId>x-pack-sql-jdbc</artifactId>
+            <version>${es.plugin.version}</version>
+        </dependency>-->
+
         <dependency>
             <groupId>org.owasp.encoder</groupId>
             <artifactId>encoder</artifactId>
@@ -351,6 +358,10 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <repositories>
+                <repository>
+                    <id>elastic.co</id>
+                    <url>https://artifacts.elastic.co/maven</url>
+                </repository>
                 <repository>
                     <id>aliyun</id>
                     <url>http://maven.aliyun.com/nexus/content/groups/public</url>

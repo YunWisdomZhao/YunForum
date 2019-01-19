@@ -549,7 +549,7 @@ public class IndexProcessor {
     @Before(StopwatchStartAdvice.class)
     @After(StopwatchEndAdvice.class)
     public void showAbout(final RequestContext context) {
-        context.sendRedirect("https://hacpai.com/article/1440573175609");
+        context.sendRedirect("http://127.0.0.1:8080/article/1440573175609");
     }
 
     /**

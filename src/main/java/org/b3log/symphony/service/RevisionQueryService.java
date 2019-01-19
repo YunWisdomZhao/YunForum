@@ -122,7 +122,7 @@ public class RevisionQueryService {
                 data.put(Article.ARTICLE_TITLE, articleTitle);
 
                 String articleContent = data.optString(Article.ARTICLE_CONTENT);
-                // articleContent = Markdowns.toHTML(articleContent); https://hacpai.com/article/1490233597586
+                // articleContent = Markdowns.toHTML(articleContent); http://127.0.0.1:8080/article/1490233597586
                 articleContent = articleContent.replace("\n", "_esc_br_");
                 articleContent = Markdowns.clean(articleContent, "");
                 articleContent = articleContent.replace("_esc_br_", "\n");

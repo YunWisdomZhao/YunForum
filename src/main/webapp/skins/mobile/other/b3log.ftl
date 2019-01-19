@@ -85,7 +85,7 @@
                     </p>
                     <p>
                         从架构上看，Solo 是 B3log 社区的重要客户端，但除了 Solo 外，目前也以插件的方支持了一些主流博客系统，请看<a
-                            href="https://hacpai.com/article/1457158841475">这里</a>。
+                            href="http://127.0.0.1:8080/article/1457158841475">这里</a>。
                     </p>
                     <h3>Rhythm</h3>
                     <p>

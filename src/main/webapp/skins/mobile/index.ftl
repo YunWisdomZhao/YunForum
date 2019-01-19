@@ -82,7 +82,7 @@
                 <#if ADLabel != ''>
                 <div class="module">
                     <div class="module-header" style="background-color: #7ea5c8">
-                        <a href="https://hacpai.com/article/1460083956075">${sponsorLabel}</a>
+                        <a href="http://127.0.0.1:8080/article/1460083956075">${sponsorLabel}</a>
                     </div>
                     <div class="ad module-panel fn-clear">
                         ${ADLabel}

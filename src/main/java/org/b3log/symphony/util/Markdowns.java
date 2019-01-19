@@ -320,7 +320,7 @@ public final class Markdowns {
                                         text = text.replace('@' + userName + (nextIsBr ? "" : " "), "@" + UserExt.getUserLink(userName));
                                     }
                                     text = text.replace("@participants ",
-                                            "@<a href='https://hacpai.com/article/1458053458339' target='_blank' class='ft-red'>participants</a> ");
+                                            "@<a href='http://127.0.0.1:8080/article/1458053458339' target='_blank' class='ft-red'>participants</a> ");
                                 }
 
                                 if (text.contains("@<a href=")) {

@@ -652,7 +652,7 @@ public class InitMgmtService {
             tag = tagRepository.get(tagId);
             tag.put(Tag.TAG_URI, "B3log");
             tag.put(Tag.TAG_ICON_PATH, "b3log.png");
-            tag.put(Tag.TAG_DESCRIPTION, "[B3log](https://b3log.org) 是一个开源组织，名字来源于“Bulletin Board Blog”缩写，目标是将独立博客与论坛结合，形成一种新的网络社区体验，详细请看 [B3log 构思](https://hacpai.com/b3log)。目前 B3log 已经开源了多款产品： [Solo] 、 [Sym] 、 [Wide] 。");
+            tag.put(Tag.TAG_DESCRIPTION, "[B3log](https://b3log.org) 是一个开源组织，名字来源于“Bulletin Board Blog”缩写，目标是将独立博客与论坛结合，形成一种新的网络社区体验，详细请看 [B3log 构思](http://127.0.0.1:8080/b3log)。目前 B3log 已经开源了多款产品： [Solo] 、 [Sym] 、 [Wide] 。");
             tagMgmtService.updateTag(tagId, tag);
 
             tagTitle = "Sym";
@@ -671,7 +671,7 @@ public class InitMgmtService {
             tag.put(Tag.TAG_DESCRIPTION, "[Solo](https://github.com/b3log/solo) 是目前 GitHub 上关注度最高的 Java 开源博客系统。\n" +
                     "\n" +
                     "* [项目地址](https://github.com/b3log/solo)\n" +
-                    "* [用户指南](https://hacpai.com/article/1492881378588)");
+                    "* [用户指南](http://127.0.0.1:8080/article/1492881378588)");
             tagMgmtService.updateTag(tagId, tag);
 
             tagTitle = "Pipe";
