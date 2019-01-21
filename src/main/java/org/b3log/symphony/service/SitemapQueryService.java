@@ -1,4 +1,4 @@
- org.b3log.symphony.service;
+package org.b3log.symphony.service;
 
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.b3log.latke.Keys;

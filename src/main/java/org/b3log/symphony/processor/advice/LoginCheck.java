@@ -1,4 +1,4 @@
- org.b3log.symphony.processor.advice;
+package org.b3log.symphony.processor.advice;
 
 import org.b3log.latke.Keys;
 import org.b3log.latke.ioc.Inject;
@@ -16,7 +16,6 @@ import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Map;
 
 /**
  * Login check. Gets user from request attribute named "user" if logged in.

@@ -1,4 +1,4 @@
- org.b3log.symphony.repository;
+package org.b3log.symphony.repository;
 
 import org.b3log.latke.repository.AbstractRepository;
 import org.b3log.latke.repository.annotation.Repository;
