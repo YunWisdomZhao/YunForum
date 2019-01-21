@@ -1,7 +1,6 @@
 /*
  * Created by Vinta Chen on 2014/11/05.
- */
-package org.b3log.symphony.util;
+ */package org.b3log.symphony.util;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

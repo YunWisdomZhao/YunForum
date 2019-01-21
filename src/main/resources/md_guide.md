@@ -103,8 +103,7 @@ var a = 1
 ##### 演示 Go 代码高亮
 
 
-```go
-package main
+```gopackage main
 
 import "fmt"
 
